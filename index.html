@@ -563,15 +563,15 @@
             }
         }
 
-        /* Portfolio Section */
-        .portfolio-grid {
+        /* Portafolio Section */
+        .portafolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .portfolio-card {
+        .portafolio-card {
             background: var(--bg-secondary);
             border-radius: 16px;
             overflow: hidden;
@@ -580,12 +580,12 @@
             position: relative;
         }
 
-        .portfolio-card:hover {
+        .portafolio-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-card);
         }
 
-        .portfolio-image {
+        .portafolio-image {
             height: 200px;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-orange));
             display: flex;
@@ -596,7 +596,7 @@
             overflow: hidden;
         }
 
-        .portfolio-image::before {
+        .portafolio-image::before {
             content: '';
             position: absolute;
             top: 0;
@@ -608,15 +608,15 @@
             transition: opacity 0.3s ease;
         }
 
-        .portfolio-card:hover .portfolio-image::before {
+        .portafolio-card:hover .portfolio-image::before {
             opacity: 1;
         }
 
-        .portfolio-content {
+        .portafolio-content {
             padding: 1.5rem;
         }
 
-        .portfolio-content h3 {
+        .portafolio-content h3 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.25rem;
             font-weight: 600;
@@ -624,7 +624,7 @@
             color: var(--text-primary);
         }
 
-        .portfolio-tech {
+        .portafolio-tech {
             display: flex;
             gap: 0.5rem;
             margin: 1rem 0;
@@ -980,10 +980,10 @@
     <!-- Header -->
     <header>
         <nav class="container">
-            <a href="#" class="logo">ULINET SOLUTIONS</a>
+            <a href="#" class="logo">ULiNeT Solutions</a>
             <ul class="nav-links">
                 <li><a href="#services" data-es="Servicios" data-en="Services" data-it="Servizi">Servicios</a></li>
-                <li><a href="#portfolio" data-es="Portfolio" data-en="Portfolio" data-it="Portfolio">Portfolio</a></li>
+                <li><a href="#portfolio" data-es="Portfolio" data-en="Portfolio" data-it="Portfolio">Portafolio</a></li>
                 <li><a href="#about" data-es="Sobre Nosotros" data-en="About Us" data-it="Chi Siamo">Sobre Nosotros</a></li>
                 <li><a href="#contact" data-es="Contacto" data-en="Contact" data-it="Contatto">Contacto</a></li>
                 <li>
@@ -1170,23 +1170,23 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section">
+    <!-- Portafolio Section -->
+    <section id="portafolio" class="section">
         <div class="container">
             <h2 class="section-title lang-content" data-es="Proyectos que hablan por nosotros" data-en="Projects that speak for us" data-it="Progetti che parlano per noi">
                 Proyectos que hablan por nosotros
             </h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
+            <div class="portafolio-grid">
+                <div class="portafolio-card">
+                    <div class="portafolio-image">
                         🏢
                     </div>
-                    <div class="portfolio-content">
+                    <div class="portafolio-content">
                         <h3 class="lang-content" data-es="E-commerce Corporativo" data-en="Corporate E-commerce" data-it="E-commerce Aziendale">E-commerce Corporativo</h3>
                         <p class="lang-content" data-es="Plataforma de comercio electrónico con más de 10,000 productos y sistema de gestión avanzado" data-en="E-commerce platform with over 10,000 products and advanced management system" data-it="Piattaforma e-commerce con oltre 10.000 prodotti e sistema di gestione avanzato">
                             Plataforma de comercio electrónico con más de 10,000 productos y sistema de gestión avanzado
                         </p>
-                        <div class="portfolio-tech">
+                        <div class="portafolio-tech">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">Node.js</span>
                             <span class="tech-tag">MongoDB</span>
@@ -1194,16 +1194,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
+                <div class="portafolio-card">
+                    <div class="portafolio-image">
                         📱
                     </div>
-                    <div class="portfolio-content">
+                    <div class="portafolio-content">
                         <h3 class="lang-content" data-es="App de Gestión SaaS" data-en="SaaS Management App" data-it="App di Gestione SaaS">App de Gestión SaaS</h3>
                         <p class="lang-content" data-es="Aplicación web progresiva para gestión empresarial con dashboard en tiempo real" data-en="Progressive web application for business management with real-time dashboard" data-it="Applicazione web progressiva per la gestione aziendale con dashboard in tempo reale">
                             Aplicación web progresiva para gestión empresarial con dashboard en tiempo real
                         </p>
-                        <div class="portfolio-tech">
+                        <div class="portafolio-tech">
                             <span class="tech-tag">Next.js</span>
                             <span class="tech-tag">TypeScript</span>
                             <span class="tech-tag">PostgreSQL</span>
@@ -1211,16 +1211,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
+                <div class="portafolio-card">
+                    <div class="portafolio-image">
                         🎓
                     </div>
-                    <div class="portfolio-content">
+                    <div class="portafolio-content">
                         <h3 class="lang-content" data-es="Plataforma Educativa" data-en="Educational Platform" data-it="Piattaforma Educativa">Plataforma Educativa</h3>
                         <p class="lang-content" data-es="Sistema de aprendizaje online con video streaming y seguimiento de progreso" data-en="Online learning system with video streaming and progress tracking" data-it="Sistema di apprendimento online con video streaming e monitoraggio dei progressi">
                             Sistema de aprendizaje online con video streaming y seguimiento de progreso
                         </p>
-                        <div class="portfolio-tech">
+                        <div class="portafolio-tech">
                             <span class="tech-tag">Vue.js</span>
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">AWS</span>
