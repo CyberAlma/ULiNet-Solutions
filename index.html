@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UliNeT Solutions - Desarrollo Web Profesional | Web Development</title>
+    <meta name="description" content="Desarrollo web profesional para empresas. Frontend, Backend, UX/UI y mantenimiento web. Transforma tu presencia digital con UliNeT Solutions.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="UliNeT Solutions - Desarrollo Web Profesional">
+    <meta property="og:description" content="Transformamos ideas en experiencias web excepcionales. Desarrollo profesional para empresas.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --bg-tertiary: #1A1A1A;
+            --bg-glass: rgba(255, 255, 255, 0.05);
+            --accent-cyan: #00D4FF;
+            --accent-orange: #FF6B35;
+            --accent-purple: #8B5CF6;
+            --accent-green: #10B981;
+            --text-primary: #FFFFFF;
+            --text-secondary: #E5E5E5;
+            --text-muted: #9CA3AF;
+            --border: rgba(255, 255, 255, 0.1);
+            --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.3);
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 25% 25%, var(--accent-cyan) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, var(--accent-orange) 0%, transparent 50%);
+            filter: blur(100px);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -30px) scale(1.1); }
+            50% { transform: translate(-30px, 50px) scale(0.9); }
+            75% { transform: translate(-50px, -30px) scale(1.1); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header with Glass Effect */
+        header {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-orange));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            box-shadow: var(--shadow-glow);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+            50% { opacity: 0.5; transform: translateY(-50%) scale(1.2); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-orange));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: 1rem;
+            background: var(--bg-glass);
+            padding: 0.25rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .lang-btn {
+            padding: 0.25rem 0.75rem;
+            border: none;
+            background: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-orange));
+            color: var(--bg-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-cyan);
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--accent-cyan);
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--accent-cyan);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-secondary:hover::before {
+            width: 100%;
+        }
+
+        .btn-secondary:hover {
+            color: var(--bg-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section with Code Animation */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-cyan));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Code Animation */
+        .hero-visual {
+            position: relative;
+            height: 400px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .code-window {
+            height: 100%;
+            position: relative;
+        }
+
+        .window-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .window-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #FF5F57; }
+        .dot-yellow { background: #FFBD2E; }
+        .dot-green { background: #28CA42; }
+
+        .code-content {
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            height: calc(100% - 60px);
+            overflow: hidden;
+        }
+
+        .code-line {
+            display: block;
+            opacity: 0;
+            animation: typewriter 3s ease-in-out infinite;
+        }
+
+        .code-line:nth-child(1) { animation-delay: 0s; }
+        .code-line:nth-child(2) { animation-delay: 0.3s; }
+        .code-line:nth-child(3) { animation-delay: 0.6s; }
+        .code-line:nth-child(4) { animation-delay: 0.9s; }
+        .code-line:nth-child(5) { animation-delay: 1.2s; }
+
+        @keyframes typewriter {
+            0% { opacity: 0; transform: translateX(-10px); }
+            20% { opacity: 1; transform: translateX(0); }
+            80% { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0.3; transform: translateX(0); }
+        }
+
+        .keyword { color: var(--accent-cyan); }
+        .string { color: var(--accent-green); }
+        .comment { color: var(--text-muted); }
+        .function { color: var(--accent-orange); }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-cyan));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Services with 3D Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-orange));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: var(--shadow-card);
+            border-color: var(--accent-cyan);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Tech Stack Section */
+        .tech-stack {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            margin: 4rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tech-item {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 12px;
+            background: var(--bg-glass);
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: scale(1.05);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .tech-logo {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .tech-name {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Data Science Process Flow */
+        .data-process-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .process-flow-item {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            min-width: 140px;
+            max-width: 160px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .process-flow-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
+        }
+
+        .flow-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .process-flow-item h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .process-flow-item p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .flow-arrow {
+            color: var(--accent-cyan);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 0.5rem;
+        }
+
+        @media (max-width: 1200px) {
+            .data-process-flow {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .flow-arrow {
+                display: none;
+            }
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .portfolio-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-card:hover .portfolio-image::before {
+            opacity: 1;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .portfolio-tech {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            padding: 0.25rem 0.75rem;
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+        }
+
+        /* Process Timeline */
+        .process-timeline {
+            position: relative;
+            margin-top: 3rem;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-cyan), var(--accent-orange));
+        }
+
+        .process-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .process-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .process-content {
+            flex: 1;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            margin: 0 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .process-content:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-card);
+        }
+
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-orange));
+            color: var(--bg-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%);
+            opacity: 0.05;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cta-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            z-index: 2;
+            position: relative;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Contact Form */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .contact-info h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+            border-color: var(--accent-cyan);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background: linear-gradient(135deg, #25d366, #20b358);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-visual {
+                order: -1;
+                height: 250px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .process-timeline::before {
+                left: 30px;
+            }
+
+            .process-item {
+                flex-direction: row !important;
+                margin-left: 60px;
+            }
+
+            .process-number {
+                left: 30px;
+                transform: translateX(-50%);
+            }
+
+            .process-content {
+                margin-left: 0;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Loading Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">ULINET SOLUTIONS</a>
+            <ul class="nav-links">
+                <li><a href="#services" data-es="Servicios" data-en="Services" data-it="Servizi">Servicios</a></li>
+                <li><a href="#portfolio" data-es="Portfolio" data-en="Portfolio" data-it="Portfolio">Portfolio</a></li>
+                <li><a href="#about" data-es="Sobre Nosotros" data-en="About Us" data-it="Chi Siamo">Sobre Nosotros</a></li>
+                <li><a href="#contact" data-es="Contacto" data-en="Contact" data-it="Contatto">Contacto</a></li>
+                <li>
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" onclick="switchLanguage('es')">ES</button>
+                        <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
+                        <button class="lang-btn" onclick="switchLanguage('it')">IT</button>
+                    </div>
+                </li>
+            </ul>
+            <a href="#contact" class="btn-primary" data-es="Contactar" data-en="Contact">Contactar</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="lang-content" data-es="Transformamos ideas en experiencias web excepcionales" data-en="We transform ideas into exceptional web experiences" data-it="Trasformiamo idee in esperienze web eccezionali">
+                        Transformamos ideas en experiencias web excepcionales
+                    </h1>
+                    <p class="lang-content" data-es="Desarrollo web profesional con tecnologías de vanguardia. Creamos soluciones digitales que impulsan el crecimiento de tu negocio." data-en="Professional web development with cutting-edge technologies. We create digital solutions that drive your business growth." data-it="Sviluppo web professionale con tecnologie all'avanguardia. Creiamo soluzioni digitali che guidano la crescita del tuo business.">
+                        Desarrollo web profesional con tecnologías de vanguardia. Creamos soluciones digitales que impulsan el crecimiento de tu negocio.
+                    </p>
+                    <div class="hero-ctas">
+                        <a href="#services" class="btn-primary lang-content" data-es="Ver nuestros servicios" data-en="View our services" data-it="Vedi i nostri servizi">Ver nuestros servicios</a>
+                        <a href="#" class="btn-secondary lang-content" onclick="openWhatsApp()" data-es="Hablar por WhatsApp" data-en="Chat on WhatsApp" data-it="Chatta su WhatsApp">Hablar por WhatsApp</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="window-dot dot-red"></div>
+                            <div class="window-dot dot-yellow"></div>
+                            <div class="window-dot dot-green"></div>
+                            <span style="margin-left: 1rem; color: var(--text-muted); font-size: 0.9rem;">ulinet-solutions.js</span>
+                        </div>
+                        <div class="code-content">
+                            <span class="code-line"><span class="keyword">const</span> <span class="function">createWebSolution</span> = <span class="keyword">async</span> () => {</span>
+                            <span class="code-line">  <span class="keyword">return</span> <span class="keyword">await</span> <span class="function">buildExceptionalExperience</span>({</span>
+                            <span class="code-line">    <span class="string">frontend</span>: <span class="string">'React + Next.js'</span>,</span>
+                            <span class="code-line">    <span class="string">backend</span>: <span class="string">'Node.js + Express'</span>,</span>
+                            <span class="code-line">    <span class="string">design</span>: <span class="string">'Modern UX/UI'</span></span>
+                            <span class="code-line">  });</span>
+                            <span class="code-line">};</span>
+                            <span class="code-line"></span>
+                            <span class="code-line"><span class="comment">// Tu éxito digital comienza aquí</span></span>
+                            <span class="code-line"><span class="function">createWebSolution</span>();</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title lang-content" data-es="Servicios que impulsan tu presencia digital" data-en="Services that boost your digital presence" data-it="Servizi che potenziano la tua presenza digitale">
+                Servicios que impulsan tu presencia digital
+            </h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">🎨</span>
+                    <h3>Frontend Development</h3>
+                    <p class="lang-content" data-es="Interfaces modernas y responsivas con React, Vue.js y tecnologías de vanguardia que cautivan a tus usuarios" data-en="Modern, responsive interfaces with React, Vue.js and cutting-edge technologies that captivate your users" data-it="Interfacce moderne e responsive con React, Vue.js e tecnologie all'avanguardia che affascinano i tuoi utenti">
+                        Interfaces modernas y responsivas con React, Vue.js y tecnologías de vanguardia que cautivan a tus usuarios
+                    </p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">⚡</span>
+                    <h3>Backend Development</h3>
+                    <p class="lang-content" data-es="Arquitectura robusta y escalable con Node.js, Python y bases de datos optimizadas para máximo rendimiento" data-en="Robust, scalable architecture with Node.js, Python and optimized databases for maximum performance" data-it="Architettura robusta e scalabile con Node.js, Python e database ottimizzati per massime prestazioni">
+                        Arquitectura robusta y escalable con Node.js, Python y bases de datos optimizadas para máximo rendimiento
+                    </p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">📊</span>
+                    <h3 class="lang-content" data-es="Análisis y Ciencia de Datos" data-en="Data Analysis & Science" data-it="Analisi e Scienza dei Dati">Análisis y Ciencia de Datos</h3>
+                    <p class="lang-content" data-es="Transformamos datos en insights accionables mediante análisis avanzado, machine learning y visualizaciones interactivas" data-en="We transform data into actionable insights through advanced analysis, machine learning and interactive visualizations" data-it="Trasformiamo i dati in insights azionabili attraverso analisi avanzate, machine learning e visualizzazioni interattive">
+                        Transformamos datos en insights accionables mediante análisis avanzado, machine learning y visualizaciones interactivas
+                    </p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🔧</span>
+                    <h3 class="lang-content" data-es="Mantenimiento Web" data-en="Web Maintenance" data-it="Manutenzione Web">Mantenimiento Web</h3>
+                    <p class="lang-content" data-es="Mantenimiento proactivo, actualizaciones de seguridad y optimización continua de rendimiento" data-en="Proactive maintenance, security updates and continuous performance optimization" data-it="Manutenzione proattiva, aggiornamenti di sicurezza e ottimizzazione continua delle prestazioni">
+                        Mantenimiento proactivo, actualizaciones de seguridad y optimización continua de rendimiento
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="tech-stack">
+                <h3 class="lang-content" style="text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; margin-bottom: 1rem;" data-es="Tecnologías que dominamos" data-en="Technologies we master" data-it="Tecnologie che padroneggiamo">
+                    Tecnologías que dominamos
+                </h3>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <span class="tech-logo">⚛️</span>
+                        <div class="tech-name">React</div>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-logo">🌟</span>
+                        <div class="tech-name">Next.js</div>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-logo">💚</span>
+                        <div class="tech-name">Node.js</div>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-logo">🐍</span>
+                        <div class="tech-name">Python</div>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-logo">🎨</span>
+                        <div class="tech-name">Tailwind</div>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-logo">🗄️</span>
+                        <div class="tech-name">MongoDB</div>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-logo">🔥</span>
+                        <div class="tech-name">Firebase</div>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-logo">☁️</span>
+                        <div class="tech-name">AWS</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Science Process -->
+            <div class="data-science-section" style="margin-top: 4rem;">
+                <h3 class="lang-content" style="text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; margin-bottom: 3rem;" data-es="Proceso de Análisis de Datos" data-en="Data Analysis Process" data-it="Processo di Analisi dei Dati">
+                    Proceso de Análisis de Datos
+                </h3>
+                <div class="data-process-flow">
+                    <div class="process-flow-item">
+                        <div class="flow-icon">📥</div>
+                        <h4 class="lang-content" data-es="Recopilación" data-en="Collection" data-it="Raccolta">Recopilación</h4>
+                        <p class="lang-content" data-es="Extracción de datos desde múltiples fuentes" data-en="Data extraction from multiple sources" data-it="Estrazione dati da fonti multiple">Extracción de datos desde múltiples fuentes</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="process-flow-item">
+                        <div class="flow-icon">🧹</div>
+                        <h4 class="lang-content" data-es="Limpieza" data-en="Cleaning" data-it="Pulizia">Limpieza</h4>
+                        <p class="lang-content" data-es="Eliminación de datos inconsistentes y duplicados" data-en="Removal of inconsistent and duplicate data" data-it="Rimozione di dati inconsistenti e duplicati">Eliminación de datos inconsistentes y duplicados</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="process-flow-item">
+                        <div class="flow-icon">🔄</div>
+                        <h4 class="lang-content" data-es="Transformación" data-en="Transformation" data-it="Trasformazione">Transformación</h4>
+                        <p class="lang-content" data-es="Normalización y estructuración de datos" data-en="Data normalization and structuring" data-it="Normalizzazione e strutturazione dei dati">Normalización y estructuración de datos</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="process-flow-item">
+                        <div class="flow-icon">🔍</div>
+                        <h4 class="lang-content" data-es="Análisis Exploratorio" data-en="Exploratory Analysis" data-it="Analisi Esplorativa">Análisis Exploratorio</h4>
+                        <p class="lang-content" data-es="Identificación de patrones y tendencias" data-en="Pattern and trend identification" data-it="Identificazione di pattern e tendenze">Identificación de patrones y tendencias</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="process-flow-item">
+                        <div class="flow-icon">🤖</div>
+                        <h4 class="lang-content" data-es="Modelado" data-en="Modeling" data-it="Modellazione">Modelado</h4>
+                        <p class="lang-content" data-es="Aplicación de algoritmos de machine learning" data-en="Machine learning algorithms application" data-it="Applicazione di algoritmi di machine learning">Aplicación de algoritmos de machine learning</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="process-flow-item">
+                        <div class="flow-icon">📊</div>
+                        <h4 class="lang-content" data-es="Visualización" data-en="Visualization" data-it="Visualizzazione">Visualización</h4>
+                        <p class="lang-content" data-es="Dashboards interactivos y reportes" data-en="Interactive dashboards and reports" data-it="Dashboard interattivi e report">Dashboards interactivos y reportes</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="process-flow-item">
+                        <div class="flow-icon">⚙️</div>
+                        <h4 class="lang-content" data-es="Automatización" data-en="Automation" data-it="Automazione">Automatización</h4>
+                        <p class="lang-content" data-es="Pipelines automatizados de procesamiento" data-en="Automated processing pipelines" data-it="Pipeline di elaborazione automatizzati">Pipelines automatizados de procesamiento</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h2 class="section-title lang-content" data-es="Proyectos que hablan por nosotros" data-en="Projects that speak for us" data-it="Progetti che parlano per noi">
+                Proyectos que hablan por nosotros
+            </h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        🏢
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="lang-content" data-es="E-commerce Corporativo" data-en="Corporate E-commerce" data-it="E-commerce Aziendale">E-commerce Corporativo</h3>
+                        <p class="lang-content" data-es="Plataforma de comercio electrónico con más de 10,000 productos y sistema de gestión avanzado" data-en="E-commerce platform with over 10,000 products and advanced management system" data-it="Piattaforma e-commerce con oltre 10.000 prodotti e sistema di gestione avanzato">
+                            Plataforma de comercio electrónico con más de 10,000 productos y sistema de gestión avanzado
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Stripe</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        📱
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="lang-content" data-es="App de Gestión SaaS" data-en="SaaS Management App" data-it="App di Gestione SaaS">App de Gestión SaaS</h3>
+                        <p class="lang-content" data-es="Aplicación web progresiva para gestión empresarial con dashboard en tiempo real" data-en="Progressive web application for business management with real-time dashboard" data-it="Applicazione web progressiva per la gestione aziendale con dashboard in tempo reale">
+                            Aplicación web progresiva para gestión empresarial con dashboard en tiempo real
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Redis</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        🎓
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="lang-content" data-es="Plataforma Educativa" data-en="Educational Platform" data-it="Piattaforma Educativa">Plataforma Educativa</h3>
+                        <p class="lang-content" data-es="Sistema de aprendizaje online con video streaming y seguimiento de progreso" data-en="Online learning system with video streaming and progress tracking" data-it="Sistema di apprendimento online con video streaming e monitoraggio dei progressi">
+                            Sistema de aprendizaje online con video streaming y seguimiento de progreso
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">WebRTC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title lang-content" data-es="Nuestro proceso de trabajo" data-en="Our work process" data-it="Il nostro processo di lavoro">
+                Nuestro proceso de trabajo
+            </h2>
+                Nuestro proceso de trabajo
+            </h2>
+            <div class="process-timeline">
+                <div class="process-item">
+                    <div class="process-number">1</div>
+                    <div class="process-content">
+                        <h3 class="lang-content" data-es="Análisis y Estrategia" data-en="Analysis and Strategy">Análisis y Estrategia</h3>
+                        <p class="lang-content" data-es="Entendemos profundamente tus necesidades, objetivos de negocio y audiencia objetivo para crear una estrategia digital efectiva" data-en="We deeply understand your needs, business objectives and target audience to create an effective digital strategy">
+                            Entendemos profundamente tus necesidades, objetivos de negocio y audiencia objetivo para crear una estrategia digital efectiva
+                        </p>
+                    </div>
+                </div>
+                <div class="process-item">
+                    <div class="process-number">2</div>
+                    <div class="process-content">
+                        <h3 class="lang-content" data-es="Diseño y Prototipado" data-en="Design and Prototyping">Diseño y Prototipado</h3>
+                        <p class="lang-content" data-es="Creamos wireframes, mockups y prototipos interactivos que visualizan la experiencia perfecta antes del desarrollo" data-en="We create wireframes, mockups and interactive prototypes that visualize the perfect experience before development">
+                            Creamos wireframes, mockups y prototipos interactivos que visualizan la experiencia perfecta antes del desarrollo
+                        </p>
+                    </div>
+                </div>
+                <div class="process-item">
+                    <div class="process-number">3</div>
+                    <div class="process-content">
+                        <h3 class="lang-content" data-es="Desarrollo Ágil" data-en="Agile Development">Desarrollo Ágil</h3>
+                        <p class="lang-content" data-es="Construimos tu solución con metodologías ágiles, entregas incrementales y testing continuo para garantizar calidad" data-en="We build your solution with agile methodologies, incremental deliveries and continuous testing to ensure quality">
+                            Construimos tu solución con metodologías ágiles, entregas incrementales y testing continuo para garantizar calidad
+                        </p>
+                    </div>
+                </div>
+                <div class="process-item">
+                    <div class="process-number">4</div>
+                    <div class="process-content">
+                        <h3 class="lang-content" data-es="Lanzamiento y Soporte" data-en="Launch and Support">Lanzamiento y Soporte</h3>
+                        <p class="lang-content" data-es="Implementamos tu proyecto en producción con monitoreo continuo y soporte técnico especializado" data-en="We implement your project in production with continuous monitoring and specialized technical support">
+                            Implementamos tu proyecto en producción con monitoreo continuo y soporte técnico especializado
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title lang-content" data-es="Sobre Nosotros" data-en="About Us">Sobre Nosotros</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;" class="lang-content" data-es="En Ulired Solutions, somos arquitectos del futuro digital. Con más de 5 años de experiencia, combinamos creatividad técnica con visión empresarial para crear soluciones web que no solo funcionan, sino que transforman negocios." data-en="At Ulired Solutions, we are architects of the digital future. With over 5 years of experience, we combine technical creativity with business vision to create web solutions that don't just work, but transform businesses.">
+                    En UliNeT Solutions, somos arquitectos del futuro digital. Con más de 5 años de experiencia, combinamos creatividad técnica con visión empresarial para crear soluciones web que no solo funcionan, sino que transforman negocios.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">50+</div>
+                        <div class="lang-content" data-es="Proyectos Completados" data-en="Completed Projects">Proyectos Completados</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 0.5rem;">98%</div>
+                        <div class="lang-content" data-es="Satisfacción del Cliente" data-en="Client Satisfaction">Satisfacción del Cliente</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: var(--accent-green); margin-bottom: 0.5rem;">24/7</div>
+                        <div class="lang-content" data-es="Soporte Técnico" data-en="Technical Support">Soporte Técnico</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-section">
+                <h2 class="lang-content" data-es="¿Listo para llevar tu negocio al siguiente nivel digital?" data-en="Ready to take your business to the next digital level?">
+                    ¿Listo para llevar tu negocio al siguiente nivel digital?
+                </h2>
+                <p class="lang-content" data-es="Comencemos a construir la solución web que transformará tu presencia digital y potenciará tu crecimiento empresarial" data-en="Let's start building the web solution that will transform your digital presence and boost your business growth">
+                    Comencemos a construir la solución web que transformará tu presencia digital y potenciará tu crecimiento empresarial
+                </p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn-primary lang-content" data-es="Solicitar cotización gratuita" data-en="Request free quote">Solicitar cotización gratuita</a>
+                    <a href="#" class="btn-secondary lang-content" onclick="openWhatsApp()" data-es="Hablar por WhatsApp" data-en="Chat on WhatsApp">Hablar por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title lang-content" data-es="Contacto" data-en="Contact">Contacto</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h3 class="lang-content" data-es="Cuéntanos sobre tu proyecto" data-en="Tell us about your project">Cuéntanos sobre tu proyecto</h3>
+                    <form onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label class="lang-content" data-es="Nombre completo" data-en="Full name">Nombre completo</label>
+                            <input type="text" required placeholder="Tu nombre...">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" required placeholder="tu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="lang-content" data-es="Teléfono" data-en="Phone">Teléfono</label>
+                            <input type="tel" placeholder="+34 600 000 000">
+                        </div>
+                        <div class="form-group">
+                            <label class="lang-content" data-es="Tipo de proyecto" data-en="Project type">Tipo de proyecto</label>
+                            <select>
+                                <option class="lang-content" data-es="Selecciona una opción" data-en="Select an option">Selecciona una opción</option>
+                                <option class="lang-content" data-es="Sitio web corporativo" data-en="Corporate website">Sitio web corporativo</option>
+                                <option class="lang-content" data-es="E-commerce" data-en="E-commerce">E-commerce</option>
+                                <option class="lang-content" data-es="Aplicación web" data-en="Web application">Aplicación web</option>
+                                <option class="lang-content" data-es="App móvil" data-en="Mobile app">App móvil</option>
+                                <option class="lang-content" data-es="Rediseño web" data-en="Web redesign">Rediseño web</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="lang-content" data-es="Presupuesto estimado" data-en="Estimated budget">Presupuesto estimado</label>
+                            <select>
+                                <option class="lang-content" data-es="Selecciona un rango" data-en="Select a range">Selecciona un rango</option>
+                                <option>€1,000 - €3,000</option>
+                                <option>€3,000 - €5,000</option>
+                                <option>€5,000 - €10,000</option>
+                                <option>€10,000+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="lang-content" data-es="Cuéntanos sobre tu proyecto" data-en="Tell us about your project">Cuéntanos sobre tu proyecto</label>
+                            <textarea placeholder="Describe tu proyecto, objetivos, timeline, funcionalidades específicas..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary lang-content" data-es="Enviar proyecto" data-en="Send project">Enviar proyecto</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3 class="lang-content" data-es="Información de contacto" data-en="Contact information">Información de contacto</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>WhatsApp</strong><br>
+                            <span style="color: var(--text-secondary);">+34 624 343 953</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            <span style="color: var(--text-secondary);">info@ulinetsolutions.com</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <strong class="lang-content" data-es="Horario" data-en="Schedule">Horario</strong><br>
+                            <span style="color: var(--text-secondary);" class="lang-content" data-es="Lun - Vie: 9:00 - 18:00" data-en="Mon - Fri: 9:00 - 18:00">Lun - Vie: 9:00 - 18:00</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong class="lang-content" data-es="Ubicación" data-en="Location">Ubicación</strong><br>
+                            <span style="color: var(--text-secondary);">Madrid, España</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">⚡</div>
+                        <div>
+                            <strong class="lang-content" data-es="Respuesta" data-en="Response">Respuesta</strong><br>
+                            <span style="color: var(--text-secondary);" class="lang-content" data-es="< 24 horas" data-en="< 24 hours">< 24 horas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ULINET SOLUTIONS</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;" class="lang-content" data-es="Transformamos ideas en experiencias web excepcionales. Tu partner tecnológico de confianza." data-en="We transform ideas into exceptional web experiences. Your trusted technology partner.">
+                        Transformamos ideas en experiencias web excepcionales. Tu partner tecnológico de confianza.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="lang-content" data-es="Servicios" data-en="Services">Servicios</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="lang-content" data-es="Desarrollo Frontend" data-en="Frontend Development">Desarrollo Frontend</a></li>
+                        <li><a href="#" class="lang-content" data-es="Desarrollo Backend" data-en="Backend Development">Desarrollo Backend</a></li>
+                        <li><a href="#" class="lang-content" data-es="Diseño UX/UI" data-en="UX/UI Design">Diseño UX/UI</a></li>
+                        <li><a href="#" class="lang-content" data-es="E-commerce" data-en="E-commerce">E-commerce</a></li>
+                        <li><a href="#" class="lang-content" data-es="Apps Móviles" data-en="Mobile Apps">Apps Móviles</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="lang-content" data-es="Empresa" data-en="Company">Empresa</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about" class="lang-content" data-es="Sobre Nosotros" data-en="About Us">Sobre Nosotros</a></li>
+                        <li><a href="#portfolio" class="lang-content" data-es="Portfolio" data-en="Portfolio">Portfolio</a></li>
+                        <li><a href="#" class="lang-content" data-es="Blog" data-en="Blog">Blog</a></li>
+                        <li><a href="#contact" class="lang-content" data-es="Contacto" data-en="Contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="lang-content" data-es="Síguenos" data-en="Follow us">Síguenos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 UliNeT Solutions. <span class="lang-content" data-es="Todos los derechos reservados." data-en="All rights reserved.">Todos los derechos reservados.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="#" class="whatsapp-float" onclick="openWhatsApp()">
+        📱
+    </a>
+
+    <script>
+        // Language Switching
+        let currentLang = 'es';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update content
+            document.querySelectorAll('.lang-content').forEach(element => {
+                const text = element.getAttribute(`data-${lang}`);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+
+            // Update form placeholders
+            if (lang === 'en') {
+                document.querySelector('input[placeholder="Tu nombre..."]').placeholder = 'Your name...';
+                document.querySelector('input[placeholder="tu@email.com"]').placeholder = 'your@email.com';
+                document.querySelector('textarea').placeholder = 'Describe your project, objectives, timeline, specific features...';
+            } else {
+                document.querySelector('input[placeholder="Your name..."]').placeholder = 'Tu nombre...';
+                document.querySelector('input[placeholder="your@email.com"]').placeholder = 'tu@email.com';
+                document.querySelector('textarea').placeholder = 'Describe tu proyecto, objetivos, timeline, funcionalidades específicas...';
+            }
+        }
+
+        // WhatsApp Integration
+        function openWhatsApp() {
+            const phone = "34624141457";
+            const message = currentLang === 'es' 
+                ? "Hola! Me interesa conocer más sobre sus servicios de desarrollo web."
+                : "Hello! I'm interested in learning more about your web development services.";
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        // Form Submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            const successMessage = currentLang === 'es' 
+                ? "¡Gracias por tu mensaje! Te contactaremos pronto."
+                : "Thank you for your message! We'll contact you soon.";
+            alert(successMessage);
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.service-card, .portfolio-card, .process-item, .tech-item');
+            animateElements.forEach(el => observer.observe(el));
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(10, 10, 10, 0.95)';
+            } else {
+                header.style.background = 'rgba(10, 10, 10, 0.8)';
+            }
+        });
+    </script>
+</body>
+</html>
