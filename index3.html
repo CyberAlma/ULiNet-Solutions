@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-es="ULiNeT Solutions - Desarrollo Web Profesional | Web Development" data-en="UliNeT Solutions - Professional Web Development | Web Development" data-it="ULiNeT Solutions - Sviluppo Web Professionale | Web Development">ULiNeT Solutions - Desarrollo Web Profesional | Web Development</title>
+    <meta name="description" data-es="Desarrollo web profesional para empresas. Frontend, Backend, UX/UI y mantenimiento web. Transforma tu presencia digital con UliNeT Solutions." data-en="Professional web development for businesses. Frontend, Backend, UX/UI, and web maintenance. Transform your digital presence with ULiNeT Solutions." data-it="Sviluppo web professionale per aziende. Frontend, Backend, UX/UI e manutenzione web. Trasforma la tua presenza digitale con ULiNeT Solutions.">
+    
+    <meta property="og:title" data-es="ULiNeT Solutions - Desarrollo Web Profesional" data-en="ULiNeT Solutions - Professional Web Development" data-it="ULiNeT Solutions - Sviluppo Web Professionale">
+    <meta property="og:description" data-es="Transformamos ideas en experiencias web excepcionales. Desarrollo profesional para empresas." data-en="We transform ideas into exceptional web experiences. Professional development for businesses." data-it="Trasformiamo idee in esperienze web eccezionali. Sviluppo professionale per le aziende.">
+    <meta property="og:type" content="website">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --bg-tertiary: #1A1A1A;
+            --bg-glass: rgba(255, 255, 255, 0.05);
+            --accent-cyan: #00D4FF;
+            --accent-orange: #FF6B35;
+            --accent-purple: #8B5CF6;
+            --accent-green: #10B981;
+            --text-primary: #FFFFFF;
+            --text-secondary: #E5E5E5;
+            --text-muted: #9CA3AF;
+            --border: rgba(255, 255, 255, 0.1);
+            --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.3);
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 25% 25%, var(--accent-cyan) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, var(--accent-orange) 0%, transparent 50%);
+            filter: blur(100px);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -30px) scale(1.1); }
+            50% { transform: translate(-30px, 50px) scale(0.9); }
+            75% { transform: translate(-50px, -30px) scale(1.1); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header with Glass Effect */
+        header {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-orange));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            box-shadow: var(--shadow-glow);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+            50% { opacity: 0.5; transform: translateY(-50%) scale(1.2); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-orange));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: 1rem;
+            background: var(--bg-glass);
+            padding: 0.25rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .lang-btn {
+            padding: 0.25rem 0.75rem;
+            border: none;
+            background: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-orange));
+            color: var(--bg-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-cyan);
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--accent-cyan);
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--accent-cyan);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-secondary:hover::before {
+            width: 100%;
+        }
+
+        .btn-secondary:hover {
+            color: var(--bg-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section with Code Animation */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-cyan));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Code Animation */
+        .hero-visual {
+            position: relative;
+            height: 400px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .code-window {
+            height: 100%;
+            position: relative;
+        }
+
+        .window-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .window-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #FF5F57; }
+        .dot-yellow { background: #FFBD2E; }
+        .dot-green { background: #28CA42; }
+
+        .code-content {
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            height: calc(100% - 60px);
+            overflow: hidden;
+        }
+
+        .code-line {
+            display: block;
+            opacity: 0;
+            animation: typewriter 3s ease-in-out infinite;
+        }
+
+        .code-line:nth-child(1) { animation-delay: 0s; }
+        .code-line:nth-child(2) { animation-delay: 0.3s; }
+        .code-line:nth-child(3) { animation-delay: 0.6s; }
+        .code-line:nth-child(4) { animation-delay: 0.9s; }
+        .code-line:nth-child(5) { animation-delay: 1.2s; }
+
+        @keyframes typewriter {
+            0% { opacity: 0; transform: translateX(-10px); }
+            20% { opacity: 1; transform: translateX(0); }
+            80% { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0.3; transform: translateX(0); }
+        }
+
+        .keyword { color: var(--accent-cyan); }
+        .string { color: var(--accent-green); }
+        .comment { color: var(--text-muted); }
+        .function { color: var(--accent-orange); }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-cyan));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Services with 3D Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-orange));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: var(--shadow-card);
+            border-color: var(--accent-cyan);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Tech Stack Section */
+        .tech-stack {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            margin: 4rem auto; /* MODIFICACIÓN 2: Centrado */
+            border: 1px solid var(--border);
+            text-align: center; /* MODIFICACIÓN 2: Centrado del contenido interno */
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            justify-items: center; /* Asegura que los items se centren dentro de sus columnas */
+        }
+
+        .tech-item {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 12px;
+            background: var(--bg-glass);
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: scale(1.05);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .tech-logo {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .tech-name {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Data Science Process Flow */
+        .data-process-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .process-flow-item {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            min-width: 140px;
+            max-width: 160px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .process-flow-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
+        }
+
+        .flow-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .process-flow-item h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .process-flow-item p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .flow-arrow {
+            color: var(--accent-cyan);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 0.5rem;
+        }
+
+        @media (max-width: 1200px) {
+            .data-process-flow {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .flow-arrow {
+                display: none;
+            }
+        }
+
+        /* Portfolio Section */
+        .portafolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portafolio-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .portafolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .portafolio-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portafolio-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portafolio-card:hover .portafolio-image::before {
+            opacity: 1;
+        }
+
+        .portafolio-content {
+            padding: 1.5rem;
+        }
+
+        .portafolio-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .portafolio-tech {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            padding: 0.25rem 0.75rem;
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+        }
+
+        /* Process Timeline */
+        .process-timeline {
+            position: relative;
+            margin-top: 3rem;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-cyan), var(--accent-orange));
+        }
+
+        .process-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .process-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .process-content {
+            flex: 1;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            margin: 0 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .process-content:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-card);
+        }
+
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-orange));
+            color: var(--bg-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%);
+            opacity: 0.05;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cta-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            z-index: 2;
+            position: relative;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Contact Form */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .contact-info h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+            border-color: var(--accent-cyan);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+        }
+
+        /* MODIFICACIÓN 3: Cambiar el color de los enlaces de contacto a blanco */
+        .contact-info a {
+            color: var(--text-primary); /* Cambiado de --accent-cyan a --text-primary */
+            text-decoration: none; /* Mantener la decoración si ya la tenías o quitarla */
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-cyan); /* Mantener el hover con color de acento si lo deseas */
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background: linear-gradient(135deg, #25d366, #20b358);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-visual {
+                order: -1;
+                height: 250px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .process-timeline::before {
+                left: 30px;
+            }
+
+            .process-item {
+                flex-direction: row !important;
+                margin-left: 60px;
+            }
+
+            .process-number {
+                left: 30px;
+                transform: translateX(-50%);
+            }
+
+            .process-content {
+                margin-left: 0;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Loading Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+  <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">ULINET SOLUTIONS</a>
+            <ul class="nav-links">
+                <li><a href="#services" data-es="Servicios" data-en="Services" data-it="Servizi">Servicios</a></li>
+                <li><a href="#portafolio" data-es="Portafolio" data-en="Portfolio" data-it="Portafoglio">Portafolio</a></li>
+                <li><a href="#about" data-es="Sobre Nosotros" data-en="About Us" data-it="Chi Siamo">Sobre Nosotros</a></li>
+                <li><a href="#contact" data-es="Contacto" data-en="Contact" data-it="Contatto">Contacto</a></li>
+                <li>
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" onclick="switchLanguage('es')">ES</button>
+                        <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
+                        <button class="lang-btn" onclick="switchLanguage('it')">IT</button>
+                    </div>
+                </li>
+            </ul>
+            <a href="#contact" class="btn-primary" data-es="Contactar" data-en="Contact" data-it="Contattaci">Contactar</a>
+        </nav>
+    </header>
+
+  <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="lang-content" data-es="Transformamos ideas en experiencias web excepcionales" data-en="We transform ideas into exceptional web experiences" data-it="Trasformiamo idee in esperienze web eccezionali">
+                        Transformamos ideas en experiencias web excepcionales
+                    </h1>
+                    <p class="lang-content" data-es="Desarrollo web profesional con tecnologías de vanguardia. Creamos soluciones digitales que impulsan el crecimiento de tu negocio." data-en="Professional web development with cutting-edge technologies. We create digital solutions that drive your business growth." data-it="Sviluppo web professionale con tecnologie all'avanguardia. Creiamo soluzioni digitali che guidano la crescita del tuo business.">
+                        Desarrollo web profesional con tecnologías de vanguardia. Creamos soluciones digitales que impulsan el crecimiento de tu negocio.
+                    </p>
+                    <div class="hero-ctas">
+                        <a href="#services" class="btn-primary lang-content" data-es="Ver nuestros servicios" data-en="View our services" data-it="Vedi i nostri servizi">Ver nuestros servicios</a>
+                        <a href="#" class="btn-secondary lang-content" onclick="openWhatsApp()" data-es="Hablar por WhatsApp" data-en="Chat on WhatsApp" data-it="Chatta su WhatsApp">Hablar por WhatsApp</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="window-dot dot-red"></div>
+                            <div class="window-dot dot-yellow"></div>
+                            <div class="window-dot dot-green"></div>
+                            <span style="margin-left: 1rem; color: var(--text-muted); font-size: 0.9rem;">ulinet-solutions.js</span>
+                        </div>
+                        <div class="code-content">
+                            <span class="code-line"><span class="keyword">const</span> <span class="function">createWebSolution</span> = <span class="keyword">async</span> () => {</span>
+                            <span class="code-line">  <span class="keyword">return</span> <span class="keyword">await</span> <span class="function">buildExceptionalExperience</span>({</span>
+                            <span class="code-line">    <span class="string">frontend</span>: <span class="string">'React + Next.js'</span>,</span>
+                            <span class="code-line">    <span class="string">backend</span>: <span class="string">'Node.js + Express'</span>,</span>
+                            <span class="code-line">    <span class="string">ui_ux</span>: <span class="string">'Figma + TailwindCSS'</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Services Section -->
+    <section id="services" class="section container">
+        <h2 class="section-title lang-content" data-es="Nuestros servicios de Desarrollo Web" data-en="Our Web Development Services" data-it="I nostri servizi di sviluppo web">
+            Nuestros servicios de Desarrollo Web
+        </h2>
+        <div class="services-grid">
+            <div class="service-card animate-in">
+                <i class="fas fa-desktop service-icon" style="color: var(--accent-cyan);"></i>
+                <h3 class="lang-content" data-es="Desarrollo Frontend" data-en="Frontend Development" data-it="Sviluppo Frontend">Desarrollo Frontend</h3>
+                <p class="lang-content" data-es="Creamos interfaces de usuario interactivas y atractivas con las últimas tecnologías como React, Vue y Angular." data-en="We create interactive and engaging user interfaces with the latest technologies like React, Vue, and Angular." data-it="Creiamo interfacce utente interattive e coinvolgenti con le ultime tecnologie come React, Vue e Angular.">
+                    Creamos interfaces de usuario interactivas y atractivas con las últimas tecnologías como React, Vue y Angular.
+                </p>
+            </div>
+            <div class="service-card animate-in">
+                <i class="fas fa-server service-icon" style="color: var(--accent-orange);"></i>
+                <h3 class="lang-content" data-es="Desarrollo Backend" data-en="Backend Development" data-it="Sviluppo Backend">Desarrollo Backend</h3>
+                <p class="lang-content" data-es="Construimos la lógica del lado del servidor, bases de datos y APIs robustas con Node.js, Python, PHP y más." data-en="We build server-side logic, databases, and robust APIs with Node.js, Python, PHP, and more." data-it="Costruiamo la logica lato server, database e API robuste con Node.js, Python, PHP e altro.">
+                    Construimos la lógica del lado del servidor, bases de datos y APIs robustas con Node.js, Python, PHP y más.
+                </p>
+            </div>
+            <div class="service-card animate-in">
+                <i class="fas fa-paint-brush service-icon" style="color: var(--accent-purple);"></i>
+                <h3 class="lang-content" data-es="Diseño UX/UI" data-en="UX/UI Design" data-it="Progettazione UX/UI">Diseño UX/UI</h3>
+                <p class="lang-content" data-es="Diseñamos experiencias de usuario intuitivas y interfaces visualmente atractivas que cautivan a tu audiencia." data-en="We design intuitive user experiences and visually appealing interfaces that captivate your audience." data-it="Progettiamo esperienze utente intuitive e interfacce visivamente accattivanti che catturano il tuo pubblico.">
+                    Diseñamos experiencias de usuario intuitivas y interfaces visualmente atractivas que cautivan a tu audiencia.
+                </p>
+            </div>
+            <div class="service-card animate-in">
+                <i class="fas fa-wrench service-icon" style="color: var(--accent-green);"></i>
+                <h3 class="lang-content" data-es="Mantenimiento y Soporte" data-en="Maintenance & Support" data-it="Manutenzione e Supporto">Mantenimiento y Soporte</h3>
+                <p class="lang-content" data-es="Ofrecemos soporte continuo y mantenimiento para asegurar que tu sitio web funcione siempre de manera óptima." data-en="We offer continuous support and maintenance to ensure your website always functions optimally." data-it="Offriamo supporto continuo e manutenzione per garantire che il tuo sito web funzioni sempre in modo ottimale.">
+                    Ofrecemos soporte continuo y mantenimiento para asegurar que tu sitio web funcione siempre de manera óptima.
+                </p>
+            </div>
+        </div>
+    </section>
+
+<!-- Tech Stack -->
+    <section id="tech-stack" class="section container">
+        <div class="tech-stack">
+            <h2 class="section-title lang-content" data-es="Nuestra pila tecnológica" data-en="Our Tech Stack" data-it="La nostra pila tecnologica">
+                Nuestra pila tecnológica
+            </h2>
+            <div class="tech-grid">
+                <div class="tech-item animate-in">
+                    <i class="fab fa-html5 tech-logo" style="color: #E34F26;"></i>
+                    <span class="tech-name">HTML5</span>
+                </div>
+                <div class="tech-item animate-in" style="animation-delay: 0.1s;">
+                    <i class="fab fa-css3-alt tech-logo" style="color: #1572B6;"></i>
+                    <span class="tech-name">CSS3</span>
+                </div>
+                <div class="tech-item animate-in" style="animation-delay: 0.2s;">
+                    <i class="fab fa-js-square tech-logo" style="color: #F7DF1E;"></i>
+                    <span class="tech-name">JavaScript</span>
+                </div>
+                <div class="tech-item animate-in" style="animation-delay: 0.3s;">
+                    <i class="fab fa-react tech-logo" style="color: #61DAFB;"></i>
+                    <span class="tech-name">React.js</span>
+                </div>
+                <div class="tech-item animate-in" style="animation-delay: 0.4s;">
+                    <i class="fab fa-node-js tech-logo" style="color: #6DA55F;"></i>
+                    <span class="tech-name">Node.js</span>
+                </div>
+                <div class="tech-item animate-in" style="animation-delay: 0.5s;">
+                    <i class="fab fa-python tech-logo" style="color: #3776AB;"></i>
+                    <span class="tech-name">Python</span>
+                </div>
+                <div class="tech-item animate-in" style="animation-delay: 0.6s;">
+                    <i class="fas fa-database tech-logo" style="color: #F29111;"></i>
+                    <span class="tech-name">SQL / NoSQL</span>
+                </div>
+                <div class="tech-item animate-in" style="animation-delay: 0.7s;">
+                    <i class="fab fa-aws tech-logo" style="color: #FF9900;"></i>
+                    <span class="tech-name">AWS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+  <section id="portafolio" class="section">
+        <div class="container">
+            <h2 class="section-title lang-content" data-es="Proyectos destacados" data-en="Featured projects" data-it="Progetti in evidenza">
+                Proyectos destacados
+            </h2>
+            <div class="portafolio-grid">
+                <div class="portafolio-card">
+                    <div class="portafolio-image">
+                        🏢
+                    </div>
+                    <div class="portafolio-content">
+                        <h3 class="lang-content" data-es="E-commerce Corporativo" data-en="Corporate E-commerce" data-it="E-commerce Aziendale">E-commerce Corporativo</h3>
+                        <p class="lang-content" data-es="Plataforma de comercio electrónico con más de 10,000 productos y sistema de gestión avanzado" data-en="E-commerce platform with over 10,000 products and advanced management system" data-it="Piattaforma e-commerce con oltre 10.000 prodotti e sistema di gestione avanzato">
+                            Plataforma de comercio electrónico con más de 10,000 productos y sistema de gestión avanzado
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Stripe</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portafolio-card">
+                    <div class="portafolio-image">
+                        📱
+                    </div>
+                    <div class="portafolio-content">
+                        <h3 class="lang-content" data-es="App de Gestión SaaS" data-en="SaaS Management App" data-it="App di Gestione SaaS">App de Gestión SaaS</h3>
+                        <p class="lang-content" data-es="Aplicación web progresiva para gestión empresarial con dashboard en tiempo real" data-en="Progressive web application for business management with real-time dashboard" data-it="Applicazione web progressiva per la gestione aziendale con dashboard in tempo reale">
+                            Aplicación web progresiva para gestión empresarial con dashboard en tiempo real
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Redis</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portafolio-card">
+                    <div class="portafolio-image">
+                        🎓
+                    </div>
+                    <div class="portafolio-content">
+                        <h3 class="lang-content" data-es="Plataforma Educativa" data-en="Educational Platform" data-it="Piattaforma Educativa">Plataforma Educativa</h3>
+                        <p class="lang-content" data-es="Sistema de aprendizaje online con video streaming y seguimiento de progreso" data-en="Online learning system with video streaming and progress tracking" data-it="Sistema di apprendimento online con video streaming e monitoraggio dei progressi">
+                            Sistema de aprendizaje online con video streaming y seguimiento de progreso
+                        </p>
+                        <div class="portafolio-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">WebRTC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+  <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title lang-content" data-es="Sobre Nosotros" data-en="About Us" data-it="Chi siamo">Sobre Nosotros</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;" class="lang-content" data-es="En ULiNet Solutions, somos arquitectos del futuro digital. Con más de 5 años de experiencia, combinamos creatividad técnica con visión empresarial para crear soluciones web que no solo funcionan, sino que transforman negocios." data-en="At ULiNet Solutions, we are architects of the digital future. With over 5 years of experience, we combine technical creativity with business vision to create web solutions that don't just work, but transform businesses." data-it="In ULiNet Solutions siamo architetti del futuro digitale. Con oltre 5 anni di esperienza, combiniamo creatività tecnica e senso degli affari per creare soluzioni web che non solo funzionano, ma trasformano le aziende.">
+                    En ULiNeT Solutions, somos arquitectos del futuro digital. Con más de 5 años de experiencia, combinamos creatividad técnica con visión empresarial para crear soluciones web que no solo funcionan, sino que transforman negocios.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">50+</div>
+                        <div class="lang-content" data-es="Proyectos Completados" data-en="Completed Projects">Proyectos Completados</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 0.5rem;">98%</div>
+                        <div class="lang-content" data-es="Satisfacción del Cliente" data-en="Client Satisfaction">Satisfacción del Cliente</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: var(--accent-green); margin-bottom: 0.5rem;">24/7</div>
+                        <div class="lang-content" data-es="Soporte Técnico" data-en="Technical Support">Soporte Técnico</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Process Section -->
+    <section id="about" class="section container">
+        <h2 class="section-title lang-content" data-es="Nuestro Proceso de Desarrollo" data-en="Our Development Process" data-it="Il nostro processo di sviluppo">
+            Nuestro Proceso de Desarrollo
+        </h2>
+        <div class="process-timeline">
+            <div class="process-item animate-in">
+                <div class="process-number">1</div>
+                <div class="process-content">
+                    <h4 class="lang-content" data-es="Descubrimiento y Planificación" data-en="Discovery & Planning" data-it="Scoperta e Pianificazione">Descubrimiento y Planificación</h4>
+                    <p class="lang-content" data-es="Entendemos tus objetivos, investigamos tu mercado y definimos la estrategia para tu proyecto." data-en="We understand your goals, research your market, and define the strategy for your project." data-it="Comprendiamo i tuoi obiettivi, ricerchiamo il tuo mercato e definiamo la strategia per il tuo progetto.">
+                        Entendemos tus objetivos, investigamos tu mercado y definimos la estrategia para tu proyecto.
+                    </p>
+                </div>
+            </div>
+            <div class="process-item animate-in" style="animation-delay: 0.1s;">
+                <div class="process-number">2</div>
+                <div class="process-content">
+                    <h4 class="lang-content" data-es="Diseño UX/UI" data-en="UX/UI Design" data-it="Progettazione UX/UI">Diseño UX/UI</h4>
+                    <p class="lang-content" data-es="Creamos prototipos, wireframes y diseños visuales para garantizar una experiencia de usuario excepcional." data-en="We create prototypes, wireframes, and visual designs to ensure an exceptional user experience." data-it="Creiamo prototipi, wireframe e design visivi per garantire un'esperienza utente eccezionale.">
+                        Creamos prototipos, wireframes y diseños visuales para garantizar una experiencia de usuario excepcional.
+                    </p>
+                </div>
+            </div>
+            <div class="process-item animate-in" style="animation-delay: 0.2s;">
+                <div class="process-number">3</div>
+                <div class="process-content">
+                    <h4 class="lang-content" data-es="Desarrollo e Implementación" data-en="Development & Implementation" data-it="Sviluppo e Implementazione">Desarrollo e Implementación</h4>
+                    <p class="lang-content" data-es="Convertimos el diseño en código funcional, construyendo la infraestructura frontend y backend de tu solución." data-en="We convert the design into functional code, building the frontend and backend infrastructure of your solution." data-it="Convertiamo il design in codice funzionale, costruendo l'infrastruttura frontend e backend della tua soluzione.">
+                        Convertimos el diseño en código funcional, construyendo la infraestructura frontend y backend de tu solución.
+                    </p>
+                </div>
+            </div>
+            <div class="process-item animate-in" style="animation-delay: 0.3s;">
+                <div class="process-number">4</div>
+                <div class="process-content">
+                    <h4 class="lang-content" data-es="Pruebas y QA" data-en="Testing & QA" data-it="Test e QA">Pruebas y QA</h4>
+                    <p class="lang-content" data-es="Realizamos pruebas exhaustivas para asegurar que todo funcione perfectamente y sin errores antes del lanzamiento." data-en="We conduct thorough testing to ensure everything works perfectly and without errors before launch." data-it="Eseguiamo test approfonditi per garantire che tutto funzioni perfettamente e senza errori prima del lancio.">
+                        Realizamos pruebas exhaustivas para asegurar que todo funcione perfectamente y sin errores antes del lanzamiento.
+                    </p>
+                </div>
+            </div>
+            <div class="process-item animate-in" style="animation-delay: 0.4s;">
+                <div class="process-number">5</div>
+                <div class="process-content">
+                    <h4 class="lang-content" data-es="Lanzamiento y Mantenimiento" data-en="Launch & Maintenance" data-it="Lancio e Manutenzione">Lanzamiento y Mantenimiento</h4>
+                    <p class="lang-content" data-es="Desplegamos tu solución y ofrecemos soporte continuo para garantizar su rendimiento y seguridad." data-en="We deploy your solution and offer continuous support to ensure its performance and security." data-it="Distribuiamo la tua soluzione e offriamo supporto continuo per garantirne le prestazioni e la sicurezza.">
+                        Desplegamos tu solución y ofrecemos soporte continuo para garantizar su rendimiento y seguridad.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section container">
+        <div class="cta-section animate-in">
+            <h2 class="lang-content" data-es="Listo para Transformar tu Negocio?" data-en="Ready to Transform Your Business?" data-it="Pronto a Trasformare il Tuo Business?">
+                Listo para Transformar tu Negocio?
+            </h2>
+            <p class="lang-content" data-es="Ponte en contacto con nuestro equipo hoy mismo para discutir cómo podemos ayudarte a alcanzar tus objetivos digitales." data-en="Get in touch with our team today to discuss how we can help you achieve your digital goals." data-it="Contatta il nostro team oggi stesso per discutere come possiamo aiutarti a raggiungere i tuoi obiettivi digitali.">
+                Ponte en contacto con nuestro equipo hoy mismo para discutir cómo podemos ayudarte a alcanzar tus objetivos digitales.
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn-primary lang-content" data-es="Contactar Ahora" data-en="Contact Now" data-it="Contattaci Ora">Contactar Ahora</a>
+                <a href="#services" class="btn-secondary lang-content" data-es="Conocer Más" data-en="Learn More" data-it="Scopri di Più">Conocer Más</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section container">
+        <h2 class="section-title lang-content" data-es="Hablemos de tu Proyecto" data-en="Let's Talk About Your Project" data-it="Parliamo del Tuo Progetto">
+            Hablemos de tu Proyecto
+        </h2>
+        <div class="contact-content">
+            <div class="contact-form animate-in">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name" class="lang-content" data-es="Nombre Completo" data-en="Full Name" data-it="Nome Completo">Nombre Completo</label>
+                        <input type="text" id="name" name="name" required class="lang-content" data-es-placeholder="Tu nombre" data-en-placeholder="Your Name" data-it-placeholder="Il tuo nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="lang-content" data-es="Correo Electrónico" data-en="Email Address" data-it="Indirizzo Email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required class="lang-content" data-es-placeholder="tu@ejemplo.com" data-en-placeholder="your@example.com" data-it-placeholder="tu@esempio.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="service" class="lang-content" data-es="Servicio de Interés" data-en="Service of Interest" data-it="Servizio di Interesse">Servicio de Interés</label>
+                        <select id="service" name="service" required>
+                            <option value="" class="lang-content" data-es="Selecciona un servicio" data-en="Select a service" data-it="Seleziona un servizio">Selecciona un servicio</option>
+                            <option value="frontend" class="lang-content" data-es="Desarrollo Frontend" data-en="Frontend Development" data-it="Sviluppo Frontend">Desarrollo Frontend</option>
+                            <option value="backend" class="lang-content" data-es="Desarrollo Backend" data-en="Backend Development" data-it="Sviluppo Backend">Desarrollo Backend</option>
+                            <option value="uxui" class="lang-content" data-es="Diseño UX/UI" data-en="UX/UI Design" data-it="Progettazione UX/UI">Diseño UX/UI</option>
+                            <option value="maintenance" class="lang-content" data-es="Mantenimiento Web" data-en="Web Maintenance" data-it="Manutenzione Web">Mantenimiento Web</option>
+                            <option value="other" class="lang-content" data-es="Otro" data-en="Other" data-it="Altro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="lang-content" data-es="Tu Mensaje" data-en="Your Message" data-it="Il tuo Messaggio">Tu Mensaje</label>
+                        <textarea id="message" name="message" rows="5" required class="lang-content" data-es-placeholder="Cuéntanos sobre tu proyecto..." data-en-placeholder="Tell us about your project..." data-it-placeholder="Parlaci del tuo progetto..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary lang-content" data-es="Enviar Mensaje" data-en="Send Message" data-it="Invia Messaggio">Enviar Mensaje</button>
+                </form>
+            </div>
+            <div class="contact-info animate-in" style="animation-delay: 0.1s;">
+                <h3 class="lang-content" data-es="Información de Contacto" data-en="Contact Information" data-it="Informazioni di Contatto">Información de Contacto</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <div>
+                        <p class="lang-content" data-es="Madrid, España" data-en="Madrid, Spain" data-it="Madrid, Spagna">Madrid, España</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div>
+                        <a href="mailto:info@ulinet.com" class="lang-content" data-es="info@ulinet.com" data-en="info@ulinet.com" data-it="info@ulinet.com">info@ulinet.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt contact-icon"></i>
+                    <div>
+                        <a href="tel:+34123456789" class="lang-content" data-es="+34 123 456 789" data-en="+34 123 456 789" data-it="+34 123 456 789">+34 123 456 789</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp contact-icon"></i>
+                    <div>
+                        <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="lang-content" data-es="Chatear por WhatsApp" data-en="Chat on WhatsApp" data-it="Chatta su WhatsApp">Chatear por WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3 class="lang-content" data-es="ULiNeT Solutions" data-en="ULiNeT Solutions" data-it="ULiNeT Solutions">ULiNeT Solutions</h3>
+                <p class="lang-content" data-es="Transformando ideas en soluciones digitales excepcionales." data-en="Transforming ideas into exceptional digital solutions." data-it="Trasformando idee in soluzioni digitali eccezionali.">Transformando ideas en soluciones digitales excepcionales.</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="lang-content" data-es="Enlaces Rápidos" data-en="Quick Links" data-it="Link Rapidi">Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#services" class="lang-content" data-es="Servicios" data-en="Services" data-it="Servizi">Servicios</a></li>
+                    <li><a href="#portfolio" class="lang-content" data-es="Portafolio" data-en="Portfolio" data-it="Portfolio">Portafolio</a></li>
+                    <li><a href="#about" class="lang-content" data-es="Sobre Nosotros" data-en="About Us" data-it="Chi Siamo">Sobre Nosotros</a></li>
+                    <li><a href="#contact" class="lang-content" data-es="Contacto" data-en="Contact" data-it="Contatto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="lang-content" data-es="Síguenos" data-en="Follow Us" data-it="Seguici">Síguenos</h3>
+                <ul class="footer-links">
+                    <li><a href="#" target="_blank">LinkedIn</a></li>
+                    <li><a href="#" target="_blank">Twitter</a></li>
+                    <li><a href="#" target="_blank">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p class="lang-content" data-es="&copy; 2025 ULiNeT Solutions. Todos los derechos reservados." data-en="&copy; 2025 ULiNeT Solutions. All rights reserved." data-it="&copy; 2025 ULiNeT Solutions. Tutti i diritti riservati.">&copy; 2025 ULiNeT Solutions. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/XXXXXXXXXXX" class="whatsapp-float" target="_blank" id="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Función para cambiar el idioma
+        function switchLanguage(lang) {
+            document.querySelectorAll('[data-es]').forEach(element => {
+                if (element.tagName === 'TITLE' || element.tagName === 'META') {
+                    if (element.hasAttribute(`data-${lang}`)) {
+                        element.textContent = element.getAttribute(`data-${lang}`);
+                    }
+                } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    if (element.hasAttribute(`data-${lang}-placeholder`)) {
+                        element.placeholder = element.getAttribute(`data-${lang}-placeholder`);
+                    }
+                } else if (element.tagName === 'OPTION') {
+                    if (element.hasAttribute(`data-${lang}`)) {
+                        element.textContent = element.getAttribute(`data-${lang}`);
+                    }
+                } else {
+                    if (element.hasAttribute(`data-${lang}`)) {
+                        element.textContent = element.getAttribute(`data-${lang}`);
+                    }
+                }
+            });
+
+            // Actualiza el botón activo del idioma
+            document.querySelectorAll('.lang-btn').forEach(button => {
+                button.classList.remove('active');
+            });
+            document.querySelector(`.lang-btn[onclick="switchLanguage('${lang}')"]`).classList.add('active');
+        }
+
+        // Script para animaciones de entrada (fade-in-up)
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-in').forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        // Función para abrir WhatsApp
+        function openWhatsApp() {
+            // Reemplaza 'XXXXXXXXXXX' con tu número de teléfono de WhatsApp en formato internacional sin el '+'
+            window.open('https://wa.me/XXXXXXXXXXX', '_blank');
+        }
+
+        // Inicializar idioma al cargar la página (por defecto español)
+        switchLanguage('es');
+    </script>
+</body>
+</html>
