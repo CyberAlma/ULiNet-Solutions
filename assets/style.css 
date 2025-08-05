@@ -1,5 +1,4 @@
 
- <style>
 
     :root {
         --bg-primary: #0A0A0A;
@@ -969,4 +968,3 @@
         animation: fadeInUp 0.6s ease-out forwards;
     }
 
-</style>
