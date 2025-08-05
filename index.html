@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ULiNeT Solutions - Desarrollo Web Profesional | Web Development</title>
-    <meta name="description" content="Desarrollo web profesional para empresas. Frontend, Backend, UX/UI y mantenimiento web. Transforma tu presencia digital con ULiNeT Solutions.">
+    <title data-es="ULiNeT Solutions - Desarrollo Web Profesional | Web Development" data-en="UliNeT Solutions - Professional Web Development | Web Development" data-it="ULiNeT Solutions - Sviluppo Web Professionale | Web Development">ULiNeT Solutions - Desarrollo Web Profesional | Web Development</title>
+    <meta name="description" data-es="Desarrollo web profesional para empresas. Frontend, Backend, UX/UI y mantenimiento web. Transforma tu presencia digital con UliNeT Solutions." data-en="Professional web development for businesses. Frontend, Backend, UX/UI, and web maintenance. Transform your digital presence with ULiNeT Solutions." data-it="Sviluppo web professionale per aziende. Frontend, Backend, UX/UI e manutenzione web. Trasforma la tua presenza digitale con ULiNeT Solutions.">
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="ULiNeT Solutions - Desarrollo Web Profesional">
-    <meta property="og:description" content="Transformamos ideas en experiencias web excepcionales. Desarrollo profesional para empresas.">
+    <meta property="og:title" data-es="ULiNeT Solutions - Desarrollo Web Profesional" data-en="ULiNeT Solutions - Professional Web Development" data-it="ULiNeT Solutions - Sviluppo Web Professionale">
+    <meta property="og:description" data-es="Transformamos ideas en experiencias web excepcionales. Desarrollo profesional para empresas." data-en="We transform ideas into exceptional web experiences. Professional development for businesses." data-it="Trasformiamo idee in esperienze web eccezionali. Sviluppo professionale per le aziende.">
     <meta property="og:type" content="website">
     
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
         :root {
             --bg-primary: #0A0A0A;
@@ -458,8 +458,9 @@
             background: var(--bg-secondary);
             border-radius: 16px;
             padding: 3rem 2rem;
-            margin: 4rem 0;
+            margin: 4rem auto; /* MODIFICACIÓN 2: Centrado */
             border: 1px solid var(--border);
+            text-align: center; /* MODIFICACIÓN 2: Centrado del contenido interno */
         }
 
         .tech-grid {
@@ -467,6 +468,7 @@
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
+            justify-items: center; /* Asegura que los items se centren dentro de sus columnas */
         }
 
         .tech-item {
@@ -563,7 +565,7 @@
             }
         }
 
-        /* Portafolio Section */
+        /* Portfolio Section */
         .portafolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -608,7 +610,7 @@
             transition: opacity 0.3s ease;
         }
 
-        .portafolio-card:hover .portfolio-image::before {
+        .portafolio-card:hover .portafolio-image::before {
             opacity: 1;
         }
 
@@ -837,6 +839,16 @@
             color: var(--accent-cyan);
         }
 
+        /* MODIFICACIÓN 3: Cambiar el color de los enlaces de contacto a blanco */
+        .contact-info a {
+            color: var(--text-primary); /* Cambiado de --accent-cyan a --text-primary */
+            text-decoration: none; /* Mantener la decoración si ya la tenías o quitarla */
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-cyan); /* Mantener el hover con color de acento si lo deseas */
+        }
+
         /* Footer */
         footer {
             background: var(--bg-secondary);
@@ -974,16 +986,15 @@
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
     <div class="bg-animation"></div>
 
-    <!-- Header -->
+  <!-- Header -->
     <header>
         <nav class="container">
-            <a href="#" class="logo">ULiNeT Solutions</a>
+            <a href="#" class="logo">ULINET SOLUTIONS</a>
             <ul class="nav-links">
                 <li><a href="#services" data-es="Servicios" data-en="Services" data-it="Servizi">Servicios</a></li>
-                <li><a href="#portfolio" data-es="Portfolio" data-en="Portfolio" data-it="Portfolio">Portafolio</a></li>
+                <li><a href="#portafolio" data-es="Portafolio" data-en="Portfolio" data-it="Portafoglio">Portafolio</a></li>
                 <li><a href="#about" data-es="Sobre Nosotros" data-en="About Us" data-it="Chi Siamo">Sobre Nosotros</a></li>
                 <li><a href="#contact" data-es="Contacto" data-en="Contact" data-it="Contatto">Contacto</a></li>
                 <li>
@@ -994,11 +1005,11 @@
                     </div>
                 </li>
             </ul>
-            <a href="#contact" class="btn-primary" data-es="Contactar" data-en="Contact">Contactar</a>
+            <a href="#contact" class="btn-primary" data-es="Contactar" data-en="Contact" data-it="Contattaci">Contactar</a>
         </nav>
     </header>
 
-    <!-- Hero Section -->
+  <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -1027,12 +1038,7 @@
                             <span class="code-line">  <span class="keyword">return</span> <span class="keyword">await</span> <span class="function">buildExceptionalExperience</span>({</span>
                             <span class="code-line">    <span class="string">frontend</span>: <span class="string">'React + Next.js'</span>,</span>
                             <span class="code-line">    <span class="string">backend</span>: <span class="string">'Node.js + Express'</span>,</span>
-                            <span class="code-line">    <span class="string">design</span>: <span class="string">'Modern UX/UI'</span></span>
-                            <span class="code-line">  });</span>
-                            <span class="code-line">};</span>
-                            <span class="code-line"></span>
-                            <span class="code-line"><span class="comment">// Tu éxito digital comienza aquí</span></span>
-                            <span class="code-line"><span class="function">createWebSolution</span>();</span>
+                            <span class="code-line">    <span class="string">ui_ux</span>: <span class="string">'Figma + TailwindCSS'</span></span>
                         </div>
                     </div>
                 </div>
@@ -1040,141 +1046,91 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section">
-        <div class="container">
-            <h2 class="section-title lang-content" data-es="Servicios que impulsan tu presencia digital" data-en="Services that boost your digital presence" data-it="Servizi che potenziano la tua presenza digitale">
-                Servicios que impulsan tu presencia digital
+  <!-- Services Section -->
+    <section id="services" class="section container">
+        <h2 class="section-title lang-content" data-es="Nuestros servicios de Desarrollo Web" data-en="Our Web Development Services" data-it="I nostri servizi di sviluppo web">
+            Nuestros servicios de Desarrollo Web
+        </h2>
+        <div class="services-grid">
+            <div class="service-card animate-in">
+                <i class="fas fa-desktop service-icon" style="color: var(--accent-cyan);"></i>
+                <h3 class="lang-content" data-es="Desarrollo Frontend" data-en="Frontend Development" data-it="Sviluppo Frontend">Desarrollo Frontend</h3>
+                <p class="lang-content" data-es="Creamos interfaces de usuario interactivas y atractivas con las últimas tecnologías como React, Vue y Angular." data-en="We create interactive and engaging user interfaces with the latest technologies like React, Vue, and Angular." data-it="Creiamo interfacce utente interattive e coinvolgenti con le ultime tecnologie come React, Vue e Angular.">
+                    Creamos interfaces de usuario interactivas y atractivas con las últimas tecnologías como React, Vue y Angular.
+                </p>
+            </div>
+            <div class="service-card animate-in">
+                <i class="fas fa-server service-icon" style="color: var(--accent-orange);"></i>
+                <h3 class="lang-content" data-es="Desarrollo Backend" data-en="Backend Development" data-it="Sviluppo Backend">Desarrollo Backend</h3>
+                <p class="lang-content" data-es="Construimos la lógica del lado del servidor, bases de datos y APIs robustas con Node.js, Python, PHP y más." data-en="We build server-side logic, databases, and robust APIs with Node.js, Python, PHP, and more." data-it="Costruiamo la logica lato server, database e API robuste con Node.js, Python, PHP e altro.">
+                    Construimos la lógica del lado del servidor, bases de datos y APIs robustas con Node.js, Python, PHP y más.
+                </p>
+            </div>
+            <div class="service-card animate-in">
+                <i class="fas fa-paint-brush service-icon" style="color: var(--accent-purple);"></i>
+                <h3 class="lang-content" data-es="Diseño UX/UI" data-en="UX/UI Design" data-it="Progettazione UX/UI">Diseño UX/UI</h3>
+                <p class="lang-content" data-es="Diseñamos experiencias de usuario intuitivas y interfaces visualmente atractivas que cautivan a tu audiencia." data-en="We design intuitive user experiences and visually appealing interfaces that captivate your audience." data-it="Progettiamo esperienze utente intuitive e interfacce visivamente accattivanti che catturano il tuo pubblico.">
+                    Diseñamos experiencias de usuario intuitivas y interfaces visualmente atractivas que cautivan a tu audiencia.
+                </p>
+            </div>
+            <div class="service-card animate-in">
+                <i class="fas fa-wrench service-icon" style="color: var(--accent-green);"></i>
+                <h3 class="lang-content" data-es="Mantenimiento y Soporte" data-en="Maintenance & Support" data-it="Manutenzione e Supporto">Mantenimiento y Soporte</h3>
+                <p class="lang-content" data-es="Ofrecemos soporte continuo y mantenimiento para asegurar que tu sitio web funcione siempre de manera óptima." data-en="We offer continuous support and maintenance to ensure your website always functions optimally." data-it="Offriamo supporto continuo e manutenzione per garantire che il tuo sito web funzioni sempre in modo ottimale.">
+                    Ofrecemos soporte continuo y mantenimiento para asegurar que tu sitio web funcione siempre de manera óptima.
+                </p>
+            </div>
+        </div>
+    </section>
+
+<!-- Tech Stack -->
+    <section id="tech-stack" class="section container">
+        <div class="tech-stack">
+            <h2 class="section-title lang-content" data-es="Nuestra pila tecnológica" data-en="Our Tech Stack" data-it="La nostra pila tecnologica">
+                Nuestra pila tecnológica
             </h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <span class="service-icon">🎨</span>
-                    <h3>Frontend Development</h3>
-                    <p class="lang-content" data-es="Interfaces modernas y responsivas con React, Vue.js y tecnologías de vanguardia que cautivan a tus usuarios" data-en="Modern, responsive interfaces with React, Vue.js and cutting-edge technologies that captivate your users" data-it="Interfacce moderne e responsive con React, Vue.js e tecnologie all'avanguardia che affascinano i tuoi utenti">
-                        Interfaces modernas y responsivas con React, Vue.js y tecnologías de vanguardia que cautivan a tus usuarios
-                    </p>
+            <div class="tech-grid">
+                <div class="tech-item animate-in">
+                    <i class="fab fa-html5 tech-logo" style="color: #E34F26;"></i>
+                    <span class="tech-name">HTML5</span>
                 </div>
-                <div class="service-card">
-                    <span class="service-icon">⚡</span>
-                    <h3>Backend Development</h3>
-                    <p class="lang-content" data-es="Arquitectura robusta y escalable con Node.js, Python y bases de datos optimizadas para máximo rendimiento" data-en="Robust, scalable architecture with Node.js, Python and optimized databases for maximum performance" data-it="Architettura robusta e scalabile con Node.js, Python e database ottimizzati per massime prestazioni">
-                        Arquitectura robusta y escalable con Node.js, Python y bases de datos optimizadas para máximo rendimiento
-                    </p>
+                <div class="tech-item animate-in" style="animation-delay: 0.1s;">
+                    <i class="fab fa-css3-alt tech-logo" style="color: #1572B6;"></i>
+                    <span class="tech-name">CSS3</span>
                 </div>
-                <div class="service-card">
-                    <span class="service-icon">📊</span>
-                    <h3 class="lang-content" data-es="Análisis y Ciencia de Datos" data-en="Data Analysis & Science" data-it="Analisi e Scienza dei Dati">Análisis y Ciencia de Datos</h3>
-                    <p class="lang-content" data-es="Transformamos datos en insights accionables mediante análisis avanzado, machine learning y visualizaciones interactivas" data-en="We transform data into actionable insights through advanced analysis, machine learning and interactive visualizations" data-it="Trasformiamo i dati in insights azionabili attraverso analisi avanzate, machine learning e visualizzazioni interattive">
-                        Transformamos datos en insights accionables mediante análisis avanzado, machine learning y visualizaciones interactivas
-                    </p>
+                <div class="tech-item animate-in" style="animation-delay: 0.2s;">
+                    <i class="fab fa-js-square tech-logo" style="color: #F7DF1E;"></i>
+                    <span class="tech-name">JavaScript</span>
                 </div>
-                <div class="service-card">
-                    <span class="service-icon">🔧</span>
-                    <h3 class="lang-content" data-es="Mantenimiento Web" data-en="Web Maintenance" data-it="Manutenzione Web">Mantenimiento Web</h3>
-                    <p class="lang-content" data-es="Mantenimiento proactivo, actualizaciones de seguridad y optimización continua de rendimiento" data-en="Proactive maintenance, security updates and continuous performance optimization" data-it="Manutenzione proattiva, aggiornamenti di sicurezza e ottimizzazione continua delle prestazioni">
-                        Mantenimiento proactivo, actualizaciones de seguridad y optimización continua de rendimiento
-                    </p>
+                <div class="tech-item animate-in" style="animation-delay: 0.3s;">
+                    <i class="fab fa-react tech-logo" style="color: #61DAFB;"></i>
+                    <span class="tech-name">React.js</span>
                 </div>
-            </div>
-
-            <!-- Tech Stack -->
-            <div class="tech-stack">
-                <h3 class="lang-content" style="text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; margin-bottom: 1rem;" data-es="Tecnologías que dominamos" data-en="Technologies we master" data-it="Tecnologie che padroneggiamo">
-                    Tecnologías que dominamos
-                </h3>
-                <div class="tech-grid">
-                    <div class="tech-item">
-                        <span class="tech-logo">⚛️</span>
-                        <div class="tech-name">React</div>
-                    </div>
-                    <div class="tech-item">
-                        <span class="tech-logo">🌟</span>
-                        <div class="tech-name">Next.js</div>
-                    </div>
-                    <div class="tech-item">
-                        <span class="tech-logo">💚</span>
-                        <div class="tech-name">Node.js</div>
-                    </div>
-                    <div class="tech-item">
-                        <span class="tech-logo">🐍</span>
-                        <div class="tech-name">Python</div>
-                    </div>
-                    <div class="tech-item">
-                        <span class="tech-logo">🎨</span>
-                        <div class="tech-name">Tailwind</div>
-                    </div>
-                    <div class="tech-item">
-                        <span class="tech-logo">🗄️</span>
-                        <div class="tech-name">MongoDB</div>
-                    </div>
-                    <div class="tech-item">
-                        <span class="tech-logo">🔥</span>
-                        <div class="tech-name">Firebase</div>
-                    </div>
-                    <div class="tech-item">
-                        <span class="tech-logo">☁️</span>
-                        <div class="tech-name">AWS</div>
-                    </div>
+                <div class="tech-item animate-in" style="animation-delay: 0.4s;">
+                    <i class="fab fa-node-js tech-logo" style="color: #6DA55F;"></i>
+                    <span class="tech-name">Node.js</span>
                 </div>
-            </div>
-
-            <!-- Data Science Process -->
-            <div class="data-science-section" style="margin-top: 4rem;">
-                <h3 class="lang-content" style="text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; margin-bottom: 3rem;" data-es="Proceso de Análisis de Datos" data-en="Data Analysis Process" data-it="Processo di Analisi dei Dati">
-                    Proceso de Análisis de Datos
-                </h3>
-                <div class="data-process-flow">
-                    <div class="process-flow-item">
-                        <div class="flow-icon">📥</div>
-                        <h4 class="lang-content" data-es="Recopilación" data-en="Collection" data-it="Raccolta">Recopilación</h4>
-                        <p class="lang-content" data-es="Extracción de datos desde múltiples fuentes" data-en="Data extraction from multiple sources" data-it="Estrazione dati da fonti multiple">Extracción de datos desde múltiples fuentes</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="process-flow-item">
-                        <div class="flow-icon">🧹</div>
-                        <h4 class="lang-content" data-es="Limpieza" data-en="Cleaning" data-it="Pulizia">Limpieza</h4>
-                        <p class="lang-content" data-es="Eliminación de datos inconsistentes y duplicados" data-en="Removal of inconsistent and duplicate data" data-it="Rimozione di dati inconsistenti e duplicati">Eliminación de datos inconsistentes y duplicados</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="process-flow-item">
-                        <div class="flow-icon">🔄</div>
-                        <h4 class="lang-content" data-es="Transformación" data-en="Transformation" data-it="Trasformazione">Transformación</h4>
-                        <p class="lang-content" data-es="Normalización y estructuración de datos" data-en="Data normalization and structuring" data-it="Normalizzazione e strutturazione dei dati">Normalización y estructuración de datos</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="process-flow-item">
-                        <div class="flow-icon">🔍</div>
-                        <h4 class="lang-content" data-es="Análisis Exploratorio" data-en="Exploratory Analysis" data-it="Analisi Esplorativa">Análisis Exploratorio</h4>
-                        <p class="lang-content" data-es="Identificación de patrones y tendencias" data-en="Pattern and trend identification" data-it="Identificazione di pattern e tendenze">Identificación de patrones y tendencias</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="process-flow-item">
-                        <div class="flow-icon">🤖</div>
-                        <h4 class="lang-content" data-es="Modelado" data-en="Modeling" data-it="Modellazione">Modelado</h4>
-                        <p class="lang-content" data-es="Aplicación de algoritmos de machine learning" data-en="Machine learning algorithms application" data-it="Applicazione di algoritmi di machine learning">Aplicación de algoritmos de machine learning</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="process-flow-item">
-                        <div class="flow-icon">📊</div>
-                        <h4 class="lang-content" data-es="Visualización" data-en="Visualization" data-it="Visualizzazione">Visualización</h4>
-                        <p class="lang-content" data-es="Dashboards interactivos y reportes" data-en="Interactive dashboards and reports" data-it="Dashboard interattivi e report">Dashboards interactivos y reportes</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="process-flow-item">
-                        <div class="flow-icon">⚙️</div>
-                        <h4 class="lang-content" data-es="Automatización" data-en="Automation" data-it="Automazione">Automatización</h4>
-                        <p class="lang-content" data-es="Pipelines automatizados de procesamiento" data-en="Automated processing pipelines" data-it="Pipeline di elaborazione automatizzati">Pipelines automatizados de procesamiento</p>
-                    </div>
+                <div class="tech-item animate-in" style="animation-delay: 0.5s;">
+                    <i class="fab fa-python tech-logo" style="color: #3776AB;"></i>
+                    <span class="tech-name">Python</span>
+                </div>
+                <div class="tech-item animate-in" style="animation-delay: 0.6s;">
+                    <i class="fas fa-database tech-logo" style="color: #F29111;"></i>
+                    <span class="tech-name">SQL / NoSQL</span>
+                </div>
+                <div class="tech-item animate-in" style="animation-delay: 0.7s;">
+                    <i class="fab fa-aws tech-logo" style="color: #FF9900;"></i>
+                    <span class="tech-name">AWS</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portafolio Section -->
-    <section id="portafolio" class="section">
+    <!-- Portfolio Section -->
+  <section id="portafolio" class="section">
         <div class="container">
-            <h2 class="section-title lang-content" data-es="Proyectos que hablan por nosotros" data-en="Projects that speak for us" data-it="Progetti che parlano per noi">
-                Proyectos que hablan por nosotros
+            <h2 class="section-title lang-content" data-es="Proyectos destacados" data-en="Featured projects" data-it="Progetti in evidenza">
+                Proyectos destacados
             </h2>
             <div class="portafolio-grid">
                 <div class="portafolio-card">
@@ -1186,7 +1142,7 @@
                         <p class="lang-content" data-es="Plataforma de comercio electrónico con más de 10,000 productos y sistema de gestión avanzado" data-en="E-commerce platform with over 10,000 products and advanced management system" data-it="Piattaforma e-commerce con oltre 10.000 prodotti e sistema di gestione avanzato">
                             Plataforma de comercio electrónico con más de 10,000 productos y sistema de gestión avanzado
                         </p>
-                        <div class="portafolio-tech">
+                        <div class="portfolio-tech">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">Node.js</span>
                             <span class="tech-tag">MongoDB</span>
@@ -1203,7 +1159,7 @@
                         <p class="lang-content" data-es="Aplicación web progresiva para gestión empresarial con dashboard en tiempo real" data-en="Progressive web application for business management with real-time dashboard" data-it="Applicazione web progressiva per la gestione aziendale con dashboard in tempo reale">
                             Aplicación web progresiva para gestión empresarial con dashboard en tiempo real
                         </p>
-                        <div class="portafolio-tech">
+                        <div class="portfolio-tech">
                             <span class="tech-tag">Next.js</span>
                             <span class="tech-tag">TypeScript</span>
                             <span class="tech-tag">PostgreSQL</span>
@@ -1232,61 +1188,13 @@
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title lang-content" data-es="Nuestro proceso de trabajo" data-en="Our work process" data-it="Il nostro processo di lavoro">
-                Nuestro proceso de trabajo
-            </h2>
-                Nuestro proceso de trabajo
-            </h2>
-            <div class="process-timeline">
-                <div class="process-item">
-                    <div class="process-number">1</div>
-                    <div class="process-content">
-                        <h3 class="lang-content" data-es="Análisis y Estrategia" data-en="Analysis and Strategy">Análisis y Estrategia</h3>
-                        <p class="lang-content" data-es="Entendemos profundamente tus necesidades, objetivos de negocio y audiencia objetivo para crear una estrategia digital efectiva" data-en="We deeply understand your needs, business objectives and target audience to create an effective digital strategy">
-                            Entendemos profundamente tus necesidades, objetivos de negocio y audiencia objetivo para crear una estrategia digital efectiva
-                        </p>
-                    </div>
-                </div>
-                <div class="process-item">
-                    <div class="process-number">2</div>
-                    <div class="process-content">
-                        <h3 class="lang-content" data-es="Diseño y Prototipado" data-en="Design and Prototyping">Diseño y Prototipado</h3>
-                        <p class="lang-content" data-es="Creamos wireframes, mockups y prototipos interactivos que visualizan la experiencia perfecta antes del desarrollo" data-en="We create wireframes, mockups and interactive prototypes that visualize the perfect experience before development">
-                            Creamos wireframes, mockups y prototipos interactivos que visualizan la experiencia perfecta antes del desarrollo
-                        </p>
-                    </div>
-                </div>
-                <div class="process-item">
-                    <div class="process-number">3</div>
-                    <div class="process-content">
-                        <h3 class="lang-content" data-es="Desarrollo Ágil" data-en="Agile Development">Desarrollo Ágil</h3>
-                        <p class="lang-content" data-es="Construimos tu solución con metodologías ágiles, entregas incrementales y testing continuo para garantizar calidad" data-en="We build your solution with agile methodologies, incremental deliveries and continuous testing to ensure quality">
-                            Construimos tu solución con metodologías ágiles, entregas incrementales y testing continuo para garantizar calidad
-                        </p>
-                    </div>
-                </div>
-                <div class="process-item">
-                    <div class="process-number">4</div>
-                    <div class="process-content">
-                        <h3 class="lang-content" data-es="Lanzamiento y Soporte" data-en="Launch and Support">Lanzamiento y Soporte</h3>
-                        <p class="lang-content" data-es="Implementamos tu proyecto en producción con monitoreo continuo y soporte técnico especializado" data-en="We implement your project in production with continuous monitoring and specialized technical support">
-                            Implementamos tu proyecto en producción con monitoreo continuo y soporte técnico especializado
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- About Section -->
-    <section id="about" class="section">
+  <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title lang-content" data-es="Sobre Nosotros" data-en="About Us">Sobre Nosotros</h2>
+            <h2 class="section-title lang-content" data-es="Sobre Nosotros" data-en="About Us" data-it="Chi siamo">Sobre Nosotros</h2>
             <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;" class="lang-content" data-es="En ULired Solutions, somos arquitectos del futuro digital. Con más de 5 años de experiencia, combinamos creatividad técnica con visión empresarial para crear soluciones web que no solo funcionan, sino que transforman negocios." data-en="At Ulired Solutions, we are architects of the digital future. With over 5 years of experience, we combine technical creativity with business vision to create web solutions that don't just work, but transform businesses.">
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;" class="lang-content" data-es="En ULiNet Solutions, somos arquitectos del futuro digital. Con más de 5 años de experiencia, combinamos creatividad técnica con visión empresarial para crear soluciones web que no solo funcionan, sino que transforman negocios." data-en="At ULiNet Solutions, we are architects of the digital future. With over 5 years of experience, we combine technical creativity with business vision to create web solutions that don't just work, but transform businesses." data-it="In ULiNet Solutions siamo architetti del futuro digitale. Con oltre 5 anni di esperienza, combiniamo creatività tecnica e senso degli affari per creare soluzioni web che non solo funzionano, ma trasformano le aziende.">
                     En ULiNeT Solutions, somos arquitectos del futuro digital. Con más de 5 años de experiencia, combinamos creatividad técnica con visión empresarial para crear soluciones web que no solo funcionan, sino que transforman negocios.
                 </p>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem;">
@@ -1307,259 +1215,231 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="section">
-        <div class="container">
-            <div class="cta-section">
-                <h2 class="lang-content" data-es="¿Listo para llevar tu negocio al siguiente nivel digital?" data-en="Ready to take your business to the next digital level?">
-                    ¿Listo para llevar tu negocio al siguiente nivel digital?
-                </h2>
-                <p class="lang-content" data-es="Comencemos a construir la solución web que transformará tu presencia digital y potenciará tu crecimiento empresarial" data-en="Let's start building the web solution that will transform your digital presence and boost your business growth">
-                    Comencemos a construir la solución web que transformará tu presencia digital y potenciará tu crecimiento empresarial
-                </p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="btn-primary lang-content" data-es="Solicitar cotización gratuita" data-en="Request free quote">Solicitar cotización gratuita</a>
-                    <a href="#" class="btn-secondary lang-content" onclick="openWhatsApp()" data-es="Hablar por WhatsApp" data-en="Chat on WhatsApp">Hablar por WhatsApp</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title lang-content" data-es="Contacto" data-en="Contact">Contacto</h2>
-            <div class="contact-content">
-                <div class="contact-form">
-                    <h3 class="lang-content" data-es="Cuéntanos sobre tu proyecto" data-en="Tell us about your project">Cuéntanos sobre tu proyecto</h3>
-                    <form onsubmit="handleSubmit(event)">
-                        <div class="form-group">
-                            <label class="lang-content" data-es="Nombre completo" data-en="Full name">Nombre completo</label>
-                            <input type="text" required placeholder="Tu nombre...">
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" required placeholder="tu@email.com">
-                        </div>
-                        <div class="form-group">
-                            <label class="lang-content" data-es="Teléfono" data-en="Phone">Teléfono</label>
-                            <input type="tel" placeholder="+34 600 000 000">
-                        </div>
-                        <div class="form-group">
-                            <label class="lang-content" data-es="Tipo de proyecto" data-en="Project type">Tipo de proyecto</label>
-                            <select>
-                                <option class="lang-content" data-es="Selecciona una opción" data-en="Select an option">Selecciona una opción</option>
-                                <option class="lang-content" data-es="Sitio web corporativo" data-en="Corporate website">Sitio web corporativo</option>
-                                <option class="lang-content" data-es="E-commerce" data-en="E-commerce">E-commerce</option>
-                                <option class="lang-content" data-es="Aplicación web" data-en="Web application">Aplicación web</option>
-                                <option class="lang-content" data-es="App móvil" data-en="Mobile app">App móvil</option>
-                                <option class="lang-content" data-es="Rediseño web" data-en="Web redesign">Rediseño web</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="lang-content" data-es="Presupuesto estimado" data-en="Estimated budget">Presupuesto estimado</label>
-                            <select>
-                                <option class="lang-content" data-es="Selecciona un rango" data-en="Select a range">Selecciona un rango</option>
-                                <option>€1,000 - €3,000</option>
-                                <option>€3,000 - €5,000</option>
-                                <option>€5,000 - €10,000</option>
-                                <option>€10,000+</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="lang-content" data-es="Cuéntanos sobre tu proyecto" data-en="Tell us about your project">Cuéntanos sobre tu proyecto</label>
-                            <textarea placeholder="Describe tu proyecto, objetivos, timeline, funcionalidades específicas..."></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary lang-content" data-es="Enviar proyecto" data-en="Send project">Enviar proyecto</button>
-                    </form>
-                </div>
-                <div class="contact-info">
-                    <h3 class="lang-content" data-es="Información de contacto" data-en="Contact information">Información de contacto</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <div>
-                            <strong>WhatsApp</strong><br>
-                            <span style="color: var(--text-secondary);">+34 624 343 953</span>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
-                        <div>
-                            <strong>Email</strong><br>
-                            <span style="color: var(--text-secondary);">info@ulinetsolutions.com</span>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">🕒</div>
-                        <div>
-                            <strong class="lang-content" data-es="Horario" data-en="Schedule">Horario</strong><br>
-                            <span style="color: var(--text-secondary);" class="lang-content" data-es="Lun - Vie: 9:00 - 18:00" data-en="Mon - Fri: 9:00 - 18:00">Lun - Vie: 9:00 - 18:00</span>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <strong class="lang-content" data-es="Ubicación" data-en="Location">Ubicación</strong><br>
-                            <span style="color: var(--text-secondary);">Madrid, España</span>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">⚡</div>
-                        <div>
-                            <strong class="lang-content" data-es="Respuesta" data-en="Response">Respuesta</strong><br>
-                            <span style="color: var(--text-secondary);" class="lang-content" data-es="< 24 horas" data-en="< 24 hours">< 24 horas</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>ULINET SOLUTIONS</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.6;" class="lang-content" data-es="Transformamos ideas en experiencias web excepcionales. Tu partner tecnológico de confianza." data-en="We transform ideas into exceptional web experiences. Your trusted technology partner.">
-                        Transformamos ideas en experiencias web excepcionales. Tu partner tecnológico de confianza.
+  <!-- Process Section -->
+    <section id="about" class="section container">
+        <h2 class="section-title lang-content" data-es="Nuestro Proceso de Desarrollo" data-en="Our Development Process" data-it="Il nostro processo di sviluppo">
+            Nuestro Proceso de Desarrollo
+        </h2>
+        <div class="process-timeline">
+            <div class="process-item animate-in">
+                <div class="process-number">1</div>
+                <div class="process-content">
+                    <h4 class="lang-content" data-es="Descubrimiento y Planificación" data-en="Discovery & Planning" data-it="Scoperta e Pianificazione">Descubrimiento y Planificación</h4>
+                    <p class="lang-content" data-es="Entendemos tus objetivos, investigamos tu mercado y definimos la estrategia para tu proyecto." data-en="We understand your goals, research your market, and define the strategy for your project." data-it="Comprendiamo i tuoi obiettivi, ricerchiamo il tuo mercato e definiamo la strategia per il tuo progetto.">
+                        Entendemos tus objetivos, investigamos tu mercado y definimos la estrategia para tu proyecto.
                     </p>
                 </div>
-                <div class="footer-section">
-                    <h3 class="lang-content" data-es="Servicios" data-en="Services">Servicios</h3>
-                    <ul class="footer-links">
-                        <li><a href="#" class="lang-content" data-es="Desarrollo Frontend" data-en="Frontend Development">Desarrollo Frontend</a></li>
-                        <li><a href="#" class="lang-content" data-es="Desarrollo Backend" data-en="Backend Development">Desarrollo Backend</a></li>
-                        <li><a href="#" class="lang-content" data-es="Diseño UX/UI" data-en="UX/UI Design">Diseño UX/UI</a></li>
-                        <li><a href="#" class="lang-content" data-es="E-commerce" data-en="E-commerce">E-commerce</a></li>
-                        <li><a href="#" class="lang-content" data-es="Apps Móviles" data-en="Mobile Apps">Apps Móviles</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3 class="lang-content" data-es="Empresa" data-en="Company">Empresa</h3>
-                    <ul class="footer-links">
-                        <li><a href="#about" class="lang-content" data-es="Sobre Nosotros" data-en="About Us">Sobre Nosotros</a></li>
-                        <li><a href="#portfolio" class="lang-content" data-es="Portfolio" data-en="Portfolio">Portfolio</a></li>
-                        <li><a href="#" class="lang-content" data-es="Blog" data-en="Blog">Blog</a></li>
-                        <li><a href="#contact" class="lang-content" data-es="Contacto" data-en="Contact">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3 class="lang-content" data-es="Síguenos" data-en="Follow us">Síguenos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">GitHub</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Instagram</a></li>
-                    </ul>
+            </div>
+            <div class="process-item animate-in" style="animation-delay: 0.1s;">
+                <div class="process-number">2</div>
+                <div class="process-content">
+                    <h4 class="lang-content" data-es="Diseño UX/UI" data-en="UX/UI Design" data-it="Progettazione UX/UI">Diseño UX/UI</h4>
+                    <p class="lang-content" data-es="Creamos prototipos, wireframes y diseños visuales para garantizar una experiencia de usuario excepcional." data-en="We create prototypes, wireframes, and visual designs to ensure an exceptional user experience." data-it="Creiamo prototipi, wireframe e design visivi per garantire un'esperienza utente eccezionale.">
+                        Creamos prototipos, wireframes y diseños visuales para garantizar una experiencia de usuario excepcional.
+                    </p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 UliNeT Solutions. <span class="lang-content" data-es="Todos los derechos reservados." data-en="All rights reserved.">Todos los derechos reservados.</span></p>
+            <div class="process-item animate-in" style="animation-delay: 0.2s;">
+                <div class="process-number">3</div>
+                <div class="process-content">
+                    <h4 class="lang-content" data-es="Desarrollo e Implementación" data-en="Development & Implementation" data-it="Sviluppo e Implementazione">Desarrollo e Implementación</h4>
+                    <p class="lang-content" data-es="Convertimos el diseño en código funcional, construyendo la infraestructura frontend y backend de tu solución." data-en="We convert the design into functional code, building the frontend and backend infrastructure of your solution." data-it="Convertiamo il design in codice funzionale, costruendo l'infrastruttura frontend e backend della tua soluzione.">
+                        Convertimos el diseño en código funcional, construyendo la infraestructura frontend y backend de tu solución.
+                    </p>
+                </div>
             </div>
+            <div class="process-item animate-in" style="animation-delay: 0.3s;">
+                <div class="process-number">4</div>
+                <div class="process-content">
+                    <h4 class="lang-content" data-es="Pruebas y QA" data-en="Testing & QA" data-it="Test e QA">Pruebas y QA</h4>
+                    <p class="lang-content" data-es="Realizamos pruebas exhaustivas para asegurar que todo funcione perfectamente y sin errores antes del lanzamiento." data-en="We conduct thorough testing to ensure everything works perfectly and without errors before launch." data-it="Eseguiamo test approfonditi per garantire che tutto funzioni perfettamente e senza errori prima del lancio.">
+                        Realizamos pruebas exhaustivas para asegurar que todo funcione perfectamente y sin errores antes del lanzamiento.
+                    </p>
+                </div>
+            </div>
+            <div class="process-item animate-in" style="animation-delay: 0.4s;">
+                <div class="process-number">5</div>
+                <div class="process-content">
+                    <h4 class="lang-content" data-es="Lanzamiento y Mantenimiento" data-en="Launch & Maintenance" data-it="Lancio e Manutenzione">Lanzamiento y Mantenimiento</h4>
+                    <p class="lang-content" data-es="Desplegamos tu solución y ofrecemos soporte continuo para garantizar su rendimiento y seguridad." data-en="We deploy your solution and offer continuous support to ensure its performance and security." data-it="Distribuiamo la tua soluzione e offriamo supporto continuo per garantirne le prestazioni e la sicurezza.">
+                        Desplegamos tu solución y ofrecemos soporte continuo para garantizar su rendimiento y seguridad.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section container">
+        <div class="cta-section animate-in">
+            <h2 class="lang-content" data-es="Listo para Transformar tu Negocio?" data-en="Ready to Transform Your Business?" data-it="Pronto a Trasformare il Tuo Business?">
+                Listo para Transformar tu Negocio?
+            </h2>
+            <p class="lang-content" data-es="Ponte en contacto con nuestro equipo hoy mismo para discutir cómo podemos ayudarte a alcanzar tus objetivos digitales." data-en="Get in touch with our team today to discuss how we can help you achieve your digital goals." data-it="Contatta il nostro team oggi stesso per discutere come possiamo aiutarti a raggiungere i tuoi obiettivi digitali.">
+                Ponte en contacto con nuestro equipo hoy mismo para discutir cómo podemos ayudarte a alcanzar tus objetivos digitales.
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn-primary lang-content" data-es="Contactar Ahora" data-en="Contact Now" data-it="Contattaci Ora">Contactar Ahora</a>
+                <a href="#services" class="btn-secondary lang-content" data-es="Conocer Más" data-en="Learn More" data-it="Scopri di Più">Conocer Más</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section container">
+        <h2 class="section-title lang-content" data-es="Hablemos de tu Proyecto" data-en="Let's Talk About Your Project" data-it="Parliamo del Tuo Progetto">
+            Hablemos de tu Proyecto
+        </h2>
+        <div class="contact-content">
+            <div class="contact-form animate-in">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name" class="lang-content" data-es="Nombre Completo" data-en="Full Name" data-it="Nome Completo">Nombre Completo</label>
+                        <input type="text" id="name" name="name" required class="lang-content" data-es-placeholder="Tu nombre" data-en-placeholder="Your Name" data-it-placeholder="Il tuo nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="lang-content" data-es="Correo Electrónico" data-en="Email Address" data-it="Indirizzo Email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required class="lang-content" data-es-placeholder="tu@ejemplo.com" data-en-placeholder="your@example.com" data-it-placeholder="tu@esempio.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="service" class="lang-content" data-es="Servicio de Interés" data-en="Service of Interest" data-it="Servizio di Interesse">Servicio de Interés</label>
+                        <select id="service" name="service" required>
+                            <option value="" class="lang-content" data-es="Selecciona un servicio" data-en="Select a service" data-it="Seleziona un servizio">Selecciona un servicio</option>
+                            <option value="frontend" class="lang-content" data-es="Desarrollo Frontend" data-en="Frontend Development" data-it="Sviluppo Frontend">Desarrollo Frontend</option>
+                            <option value="backend" class="lang-content" data-es="Desarrollo Backend" data-en="Backend Development" data-it="Sviluppo Backend">Desarrollo Backend</option>
+                            <option value="uxui" class="lang-content" data-es="Diseño UX/UI" data-en="UX/UI Design" data-it="Progettazione UX/UI">Diseño UX/UI</option>
+                            <option value="maintenance" class="lang-content" data-es="Mantenimiento Web" data-en="Web Maintenance" data-it="Manutenzione Web">Mantenimiento Web</option>
+                            <option value="other" class="lang-content" data-es="Otro" data-en="Other" data-it="Altro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="lang-content" data-es="Tu Mensaje" data-en="Your Message" data-it="Il tuo Messaggio">Tu Mensaje</label>
+                        <textarea id="message" name="message" rows="5" required class="lang-content" data-es-placeholder="Cuéntanos sobre tu proyecto..." data-en-placeholder="Tell us about your project..." data-it-placeholder="Parlaci del tuo progetto..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary lang-content" data-es="Enviar Mensaje" data-en="Send Message" data-it="Invia Messaggio">Enviar Mensaje</button>
+                </form>
+            </div>
+            <div class="contact-info animate-in" style="animation-delay: 0.1s;">
+                <h3 class="lang-content" data-es="Información de Contacto" data-en="Contact Information" data-it="Informazioni di Contatto">Información de Contacto</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <div>
+                        <p class="lang-content" data-es="Madrid, España" data-en="Madrid, Spain" data-it="Madrid, Spagna">Madrid, España</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div>
+                        <a href="mailto:info@ulinet.com" class="lang-content" data-es="info@ulinet.com" data-en="info@ulinet.com" data-it="info@ulinet.com">info@ulinet.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt contact-icon"></i>
+                    <div>
+                        <a href="tel:+34123456789" class="lang-content" data-es="+34 123 456 789" data-en="+34 123 456 789" data-it="+34 123 456 789">+34 123 456 789</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp contact-icon"></i>
+                    <div>
+                        <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="lang-content" data-es="Chatear por WhatsApp" data-en="Chat on WhatsApp" data-it="Chatta su WhatsApp">Chatear por WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3 class="lang-content" data-es="ULiNeT Solutions" data-en="ULiNeT Solutions" data-it="ULiNeT Solutions">ULiNeT Solutions</h3>
+                <p class="lang-content" data-es="Transformando ideas en soluciones digitales excepcionales." data-en="Transforming ideas into exceptional digital solutions." data-it="Trasformando idee in soluzioni digitali eccezionali.">Transformando ideas en soluciones digitales excepcionales.</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="lang-content" data-es="Enlaces Rápidos" data-en="Quick Links" data-it="Link Rapidi">Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#services" class="lang-content" data-es="Servicios" data-en="Services" data-it="Servizi">Servicios</a></li>
+                    <li><a href="#portfolio" class="lang-content" data-es="Portafolio" data-en="Portfolio" data-it="Portfolio">Portafolio</a></li>
+                    <li><a href="#about" class="lang-content" data-es="Sobre Nosotros" data-en="About Us" data-it="Chi Siamo">Sobre Nosotros</a></li>
+                    <li><a href="#contact" class="lang-content" data-es="Contacto" data-en="Contact" data-it="Contatto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="lang-content" data-es="Síguenos" data-en="Follow Us" data-it="Seguici">Síguenos</h3>
+                <ul class="footer-links">
+                    <li><a href="#" target="_blank">LinkedIn</a></li>
+                    <li><a href="#" target="_blank">Twitter</a></li>
+                    <li><a href="#" target="_blank">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p class="lang-content" data-es="&copy; 2025 ULiNeT Solutions. Todos los derechos reservados." data-en="&copy; 2025 ULiNeT Solutions. All rights reserved." data-it="&copy; 2025 ULiNeT Solutions. Tutti i diritti riservati.">&copy; 2025 ULiNeT Solutions. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- WhatsApp Float Button -->
-    <a href="#" class="whatsapp-float" onclick="openWhatsApp()">
-        📱
+    <a href="https://wa.me/XXXXXXXXXXX" class="whatsapp-float" target="_blank" id="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
-        // Language Switching
-        let currentLang = 'es';
-
+        // Función para cambiar el idioma
         function switchLanguage(lang) {
-            currentLang = lang;
-            
-            // Update active button
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Update content
-            document.querySelectorAll('.lang-content').forEach(element => {
-                const text = element.getAttribute(`data-${lang}`);
-                if (text) {
-                    element.textContent = text;
+            document.querySelectorAll('[data-es]').forEach(element => {
+                if (element.tagName === 'TITLE' || element.tagName === 'META') {
+                    if (element.hasAttribute(`data-${lang}`)) {
+                        element.textContent = element.getAttribute(`data-${lang}`);
+                    }
+                } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    if (element.hasAttribute(`data-${lang}-placeholder`)) {
+                        element.placeholder = element.getAttribute(`data-${lang}-placeholder`);
+                    }
+                } else if (element.tagName === 'OPTION') {
+                    if (element.hasAttribute(`data-${lang}`)) {
+                        element.textContent = element.getAttribute(`data-${lang}`);
+                    }
+                } else {
+                    if (element.hasAttribute(`data-${lang}`)) {
+                        element.textContent = element.getAttribute(`data-${lang}`);
+                    }
                 }
             });
 
-            // Update form placeholders
-            if (lang === 'en') {
-                document.querySelector('input[placeholder="Tu nombre..."]').placeholder = 'Your name...';
-                document.querySelector('input[placeholder="tu@email.com"]').placeholder = 'your@email.com';
-                document.querySelector('textarea').placeholder = 'Describe your project, objectives, timeline, specific features...';
-            } else {
-                document.querySelector('input[placeholder="Your name..."]').placeholder = 'Tu nombre...';
-                document.querySelector('input[placeholder="your@email.com"]').placeholder = 'tu@email.com';
-                document.querySelector('textarea').placeholder = 'Describe tu proyecto, objetivos, timeline, funcionalidades específicas...';
-            }
+            // Actualiza el botón activo del idioma
+            document.querySelectorAll('.lang-btn').forEach(button => {
+                button.classList.remove('active');
+            });
+            document.querySelector(`.lang-btn[onclick="switchLanguage('${lang}')"]`).classList.add('active');
         }
 
-        // WhatsApp Integration
+        // Script para animaciones de entrada (fade-in-up)
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-in').forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        // Función para abrir WhatsApp
         function openWhatsApp() {
-            const phone = "34624141457";
-            const message = currentLang === 'es' 
-                ? "Hola! Me interesa conocer más sobre sus servicios de desarrollo web."
-                : "Hello! I'm interested in learning more about your web development services.";
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
+            // Reemplaza 'XXXXXXXXXXX' con tu número de teléfono de WhatsApp en formato internacional sin el '+'
+            window.open('https://wa.me/XXXXXXXXXXX', '_blank');
         }
 
-        // Form Submission
-        function handleSubmit(event) {
-            event.preventDefault();
-            const successMessage = currentLang === 'es' 
-                ? "¡Gracias por tu mensaje! Te contactaremos pronto."
-                : "Thank you for your message! We'll contact you soon.";
-            alert(successMessage);
-        }
-
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Scroll Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.addEventListener('DOMContentLoaded', () => {
-            const animateElements = document.querySelectorAll('.service-card, .portfolio-card, .process-item, .tech-item');
-            animateElements.forEach(el => observer.observe(el));
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(10, 10, 10, 0.95)';
-            } else {
-                header.style.background = 'rgba(10, 10, 10, 0.8)';
-            }
-        });
+        // Inicializar idioma al cargar la página (por defecto español)
+        switchLanguage('es');
     </script>
 </body>
 </html>
