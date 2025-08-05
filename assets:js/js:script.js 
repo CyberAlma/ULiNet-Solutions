@@ -1,0 +1,60 @@
+
+// Función para cambiar el idioma
+function switchLanguage(lang) {
+    document.querySelectorAll('[data-es]').forEach(element => {
+        if (element.tagName === 'TITLE' || element.tagName === 'META') {
+            if (element.hasAttribute(`data-${lang}`)) {
+                element.textContent = element.getAttribute(`data-${lang}`);
+            }
+        } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+            if (element.hasAttribute(`data-${lang}-placeholder`)) {
+                element.placeholder = element.getAttribute(`data-${lang}-placeholder`);
+            }
+        } else if (element.tagName === 'OPTION') {
+            if (element.hasAttribute(`data-${lang}`)) {
+                element.textContent = element.getAttribute(`data-${lang}`);
+            }
+        } else {
+            if (element.hasAttribute(`data-${lang}`)) {
+                element.textContent = element.getAttribute(`data-${lang}`);
+            }
+        }
+    });
+
+    // Actualiza el botón activo del idioma
+    document.querySelectorAll('.lang-btn').forEach(button => {
+        button.classList.remove('active');
+    });
+    document.querySelector(`.lang-btn[onclick="switchLanguage('${lang}')"]`).classList.add('active');
+}
+
+// Script para animaciones de entrada (fade-in-up)
+document.addEventListener("DOMContentLoaded", function() {
+    const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-in').forEach(element => {
+        observer.observe(element);
+    });
+});
+
+// Función para abrir WhatsApp
+function openWhatsApp() {
+    // Reemplaza 'XXXXXXXXXXX' con tu número de teléfono de WhatsApp en formato internacional sin el '+'
+    window.open('https://wa.me/34624141457', '_blank');
+}
+
+// Inicializar idioma al cargar la página (por defecto español)
+switchLanguage('es');
